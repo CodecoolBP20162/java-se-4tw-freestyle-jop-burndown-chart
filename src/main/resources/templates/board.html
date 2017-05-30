@@ -4,12 +4,14 @@
 <div th:include="index::imports"></div>
 <body>
 
-<ul>
-<div th:each="row : ${board}">
-    <li th:each="num : ${row}">
-        <p th:text="${num}">k</p>
-    </li>
-</div>
-</ul>
+<table class="table table-bordered">
+    <tr th:each="row:${board}">
+        <th th:each="num:${row}">
+            <p th:text="${num}">record</p>
+        </th>
+    </tr>
+
+</table>
+
 </body>
 </html>
