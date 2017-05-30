@@ -12,6 +12,6 @@ public class MainController {
 
     public static ModelAndView renderIndex(Request req, Response res) {
         HashMap<String, String> map = new HashMap<>();
-        return new ModelAndView(map,"index");
+        return new ModelAndView(map,"form");
     }
 }

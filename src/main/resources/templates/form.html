@@ -1,0 +1,11 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<div th:include="index::imports"></div>
+<body>
+    <form action="/get_size" method="post">
+        <input type="text" placeholder="How big is yours?" name="size"></input>
+        <button type="submit" id="submit">Go</button>
+    </form>
+
+</body>
+</html>

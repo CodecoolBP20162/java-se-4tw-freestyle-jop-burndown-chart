@@ -18,5 +18,7 @@ public class Main {
 
         post("/get_size", FieldController::createNewBoard);
 
+        get("/board", FieldController::showBoard, new ThymeleafTemplateEngine());
+
     }
 }

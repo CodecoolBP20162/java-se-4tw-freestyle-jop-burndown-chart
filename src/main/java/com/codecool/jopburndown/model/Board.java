@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Board {
 
-    char[][] actualBoard;
+    private char[][] actualBoard;
 
     public Board(int size) {
         this.actualBoard = createBoard(size);
@@ -46,6 +46,10 @@ public class Board {
                 }
             }
         }
+    }
+
+    public char[][] getActualBoard() {
+        return actualBoard;
     }
 
     @Override

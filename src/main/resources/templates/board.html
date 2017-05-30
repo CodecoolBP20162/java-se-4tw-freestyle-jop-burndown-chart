@@ -1,0 +1,15 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<div th:include="index::imports"></div>
+<body>
+
+<ul>
+<div th:each="row : ${board}">
+    <li th:each="num : ${row}">
+        <p th:text="${num}">k</p>
+    </li>
+</div>
+</ul>
+</body>
+</html>
