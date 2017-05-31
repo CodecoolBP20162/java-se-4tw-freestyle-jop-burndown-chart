@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".square").click(function () {
+    $(".table-buttons").click(function () {
         var x = $(this).attr("value");
         var y = $(this).attr("name");
         $.ajax({
