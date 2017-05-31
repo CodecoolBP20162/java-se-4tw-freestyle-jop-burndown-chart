@@ -12,7 +12,7 @@ $(document).ready(function(){
 
         url:"/register_user",
         type:"POST",
-        data:{"name":name,"psw":psw},
+        data:{"username":name,"password":psw},
         dataType:"html",
         success:function () {
             location.href ="/";
@@ -28,7 +28,7 @@ $(document).ready(function(){
 
             url:"/login_user",
             type:"POST",
-            data:{"name":name,"psw":psw},
+            data:{"username":name,"password":psw},
             dataType:"html",
             success:function () {
                 location.href ="/";
