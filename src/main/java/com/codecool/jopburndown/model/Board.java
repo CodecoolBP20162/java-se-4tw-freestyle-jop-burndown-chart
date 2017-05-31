@@ -1,11 +1,30 @@
 package com.codecool.jopburndown.model;
 
-
+import javax.persistence.*;
 import java.util.Random;
 
+@Entity
+@Table(name = "board")
 public class Board {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(name="board_size")
+    private int boardSize;
+    @Column(name="score" )
+    private int score;
+    @ManyToMany
+    @JoinColumn(name="user_id")
+    private User username;
+
     private char[][] actualBoard;
+
+    public Board(int boardSize, int score, User username) {
+        this.boardSize = boardSize;
+        this.score = score;
+        this.username = username;
+    }
 
     public Board(int size) {
         this.actualBoard = createBoard(size);
