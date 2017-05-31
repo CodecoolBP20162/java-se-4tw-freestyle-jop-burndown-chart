@@ -22,5 +22,6 @@ public class Main {
 
         post("/retrieve_data", FieldController::infoAboutSquare);
 
+        get("/evaluate", FieldController::countMines);
     }
 }

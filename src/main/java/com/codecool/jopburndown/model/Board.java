@@ -10,6 +10,7 @@ public class Board {
     private char[][] actualBoard;
     private char[][] copyBoard;
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
+    public int mineCounter = 0;
 
     public Board(int size) {
         this.actualBoard = createBoard(size);
@@ -27,6 +28,7 @@ public class Board {
 
                 if (actualRandomNum > 8) {
                     board[i][j] = '9';
+                    mineCounter++;
                 } else {
                     board[i][j] = '0';
                 }

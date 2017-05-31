@@ -55,4 +55,13 @@ public class FieldController {
 
         return jsonObj;
     }
+
+
+
+    public static JSONObject countMines(Request req, Response res){
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("numberOfMines", board.mineCounter);
+        res.type("application/json");
+        return jsonObj;
+    }
 }

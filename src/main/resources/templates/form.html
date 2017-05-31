@@ -2,10 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <div th:include="index::imports"></div>
 <body>
-    <form action="/get_size" method="post">
-        <input type="text" placeholder="How big is yours?" name="size"></input>
-        <button type="submit" id="submit">Go</button>
-    </form>
+<div style="text-align: center"><p>Make your choice and fill your destiny!</p></div>
+<form id="difficulty-form" action="/get_size" method="post">
+    <div>
+        <input type="radio" th:name="${'size'}" value="5"/> Easy
+    </div>
+    <div>
+        <input type="radio" th:name="${'size'}" value="10"/> Normal
+    </div>
+    <div>
+        <input type="radio" th:name="${'size'}" value="15"/> Hard
+    </div>
+    <button type="submit">Build it!</button>
+</form>
 
 </body>
 </html>
