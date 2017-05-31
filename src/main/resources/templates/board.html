@@ -4,10 +4,26 @@
 <div th:include="index::imports"></div>
 <body>
 <div class="container table-container">
-    <div class="col-3">
-        <div class="row">
+        <div th:if="${board.length == 5}" class="row">
             <table class="table table-bordered">
-
+                <tr class="table-row" th:each="row, iterStat:${board}">
+                    <th class="button-container" th:each="num, iterStat2:${row}">
+                        <button class="table-buttons" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${board.length == 10}" class="row">
+            <table class="table table-bordered-10">
+                <tr class="table-row" th:each="row, iterStat:${board}">
+                    <th class="button-container" th:each="num, iterStat2:${row}">
+                        <button class="table-buttons" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${board.length == 15}" class="row">
+            <table class="table table-bordered-15">
                 <tr class="table-row" th:each="row, iterStat:${board}">
                     <th class="button-container" th:each="num, iterStat2:${row}">
                         <button class="table-buttons" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
@@ -16,6 +32,5 @@
             </table>
         </div>
     </div>
-</div>
 </body>
 </html>
