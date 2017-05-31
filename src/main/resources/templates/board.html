@@ -12,6 +12,9 @@
                     </td>
                 </tr>
             </table>
+            <div>
+                <p class="game-over"></p>
+            </div>
         </div>
         <div th:if="${board.length == 10}" class="row">
             <table class="table table-bordered-10">
@@ -21,6 +24,9 @@
                     </td>
                 </tr>
             </table>
+            <div>
+                <p class="game-over-10"></p>
+            </div>
         </div>
         <div th:if="${board.length == 15}" class="row">
             <table class="table table-bordered-15">
@@ -31,8 +37,10 @@
                     </td>
                 </tr>
             </table>
+            <div>
+                <p class="game-over-15"></p>
+            </div>
         </div>
     </div>
-<p id="game-over"></p>
 </body>
 </html>

@@ -101,3 +101,34 @@ table {
 #difficulty-form{
     text-align: center;
 }
+
+.congratulation-message{
+    font-family: "Droid Sans";
+    font-weight: bold;
+    color: brown;
+    text-align: center;
+
+}
+
+.game-over-message{
+    font-family: "Droid Sans";
+    font-weight: bold;
+    color: cadetblue;
+    text-align: center;
+
+}
+
+.game-over{
+    width: 19%;
+    text-align: center;
+}
+.game-over-10{
+    width: 38%;
+    text-align: center;
+
+}
+.game-over-15{
+    width: 57%;
+    text-align: center;
+
+}

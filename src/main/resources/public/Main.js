@@ -27,7 +27,9 @@ $(document).ready(function () {
                         //$(".button-container").html("<p class='glyphicon glyphicon-remove'></p>")
                         $(".table-buttons").prop('disabled', true);
                         $(selector).parent().html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
-                        $("#game-over").html("<p>GAME OVER</p><form action='/'><button type='submit'>NEW GAME</button></form> ")
+                        $(".game-over").html("<h1 class='game-over-message'>GAME OVER</h1><form action='/'><button type='submit'  class='btn btn-primary active'>NEW GAME</button></form> ")
+                        $(".game-over-10").html("<h1 class='game-over-message'>GAME OVER</h1><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form> ")
+                        $(".game-over-15").html("<h1 class='game-over-message'>GAME OVER</h1><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form> ")
                     }else {
                         $(selector).html(resp["currentChars"][i]);
                         $(selector).addClass("revealed button-value" + resp["currentChars"][i])
@@ -50,7 +52,9 @@ $(document).ready(function () {
                 if($(".button-container").length - $(".revealed").length == resp["numberOfMines"]){
                     $(".table-buttons").prop('disabled', true);
                     $(".unchecked").html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
-                    $("#game-over").html("<p>Congratulation! You survive the minefield!</p><form action='/'><button type='submit'>NEW GAME</button></form>");
+                    $(".game-over").html("<h2 class='congratulation-message'>Congratulation!</h2><p class='congratulation-message'>You survived the minefield!</p><form action='/'><button type='submit'class='btn btn-primary active'>NEW GAME</button></form>");
+                    $(".game-over-10").html("<h1 class='congratulation-message'>Congratulation!</h1><p class='congratulation-message'>You survived the minefield!</p><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form>");
+                    $(".game-over-15").html("<h1 class='congratulation-message'>Congratulation!</h1><p class='congratulation-message'>You survived the minefield!</p><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form>");
                 }
             },
             error: function () {
