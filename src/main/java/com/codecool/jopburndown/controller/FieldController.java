@@ -20,6 +20,9 @@ public class FieldController {
     }
 
     public static ModelAndView showBoard(Request req, Response res){
+        if(!req.session().attributes().contains("user")){
+            return UserController.renderLogin(req,res);
+        }
         char[][] actualBoard = board.getActualBoard();
         Map<String, Object> params = new HashMap<>();
         params.put("board", actualBoard);

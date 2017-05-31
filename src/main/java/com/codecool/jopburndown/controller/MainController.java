@@ -11,6 +11,9 @@ import java.util.HashMap;
 public class MainController {
 
     public static ModelAndView renderIndex(Request req, Response res) {
+        if(!req.session().attributes().contains("user")){
+            return UserController.renderLogin(req,res);
+        }
         HashMap<String, String> map = new HashMap<>();
         return new ModelAndView(map,"form");
     }

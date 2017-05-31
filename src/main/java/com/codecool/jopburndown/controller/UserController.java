@@ -41,7 +41,7 @@ public class UserController {
      * @return ModelAndView
      */
     public static ModelAndView renderRegister(Request req, Response res){
-        logger.debug("Register page accessed");
+        logger.info("Register page accessed");
         return new ModelAndView(map,"register");
     }
 

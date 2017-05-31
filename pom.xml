@@ -57,6 +57,7 @@
             <artifactId>jBCrypt</artifactId>
             <version>0.4</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
