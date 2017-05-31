@@ -20,5 +20,7 @@ public class Main {
 
         get("/board", FieldController::showBoard, new ThymeleafTemplateEngine());
 
+        post("/retrieve_data", FieldController::infoAboutSquare);
+
     }
 }

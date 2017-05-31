@@ -1,6 +1,7 @@
 package com.codecool.jopburndown.controller;
 
 import com.codecool.jopburndown.model.Board;
+import org.json.simple.JSONObject;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -26,9 +27,12 @@ public class FieldController {
         return new ModelAndView(params, "board");
     }
 
-    public static char infoAboutSquare(Request req, Response res){
+    public static JSONObject infoAboutSquare(Request req, Response res){
         int x = Integer.parseInt(req.queryParams("x"));
         int y = Integer.parseInt(req.queryParams("y"));
-        return board.getActualElement(x, y);
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("currentChar", board.getActualElement(x, y));
+        res.type("application/json");
+        return jsonObj;
     }
 }
