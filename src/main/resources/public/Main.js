@@ -8,8 +8,11 @@ $(document).ready(function () {
             async: true,
             data: {x: x, y: y},
             success: function (resp) {
-                var selector = '#' + resp["coords"][0] + resp["coords"][1];
-                $(selector).html(resp["currentChar"]);
+                for (var i = 0; i < resp["currentChars"].length; i++) {
+                    var selector = '#' + resp["coords"][i][0] + resp["coords"][i][1];
+                    $(selector).html(resp["currentChars"][i]);
+                }
+
             }
         });
     });

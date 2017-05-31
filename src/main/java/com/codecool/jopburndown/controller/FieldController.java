@@ -9,6 +9,7 @@ import spark.Response;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.*;
 
 public class FieldController {
 
@@ -29,15 +30,29 @@ public class FieldController {
     }
 
     public static JSONObject infoAboutSquare(Request req, Response res){
+
+        System.out.println(board);
+
+        JSONObject jsonObj = new JSONObject();
         int x = Integer.parseInt(req.queryParams("x"));
         int y = Integer.parseInt(req.queryParams("y"));
-        JSONObject jsonObj = new JSONObject();
+        char actualChar = board.getActualElement(x, y);
+        List<Character> currentChars = new ArrayList<>();
+        List<List<Integer>> coordsOfCharsToDisplay;
 
-        char currentChar = board.getActualElement(x, y);
+        if (actualChar == '0'){
+            coordsOfCharsToDisplay = board.getListToReveal(x, y);
+            currentChars = board.getAllCharsToDisplay(coordsOfCharsToDisplay);
+        } else {
+            coordsOfCharsToDisplay = Arrays.asList(Arrays.asList(x, y));
+            currentChars.add(actualChar);
+        }
 
-        jsonObj.put("currentChar", currentChar);
-        jsonObj.put("coords", Arrays.asList(x, y));
+        jsonObj.put("currentChars", currentChars);
+        jsonObj.put("coords", coordsOfCharsToDisplay);
+
         res.type("application/json");
+
         return jsonObj;
     }
 }

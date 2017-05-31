@@ -1,15 +1,20 @@
 package com.codecool.jopburndown.model;
 
 
-import java.util.Random;
+import com.sun.org.apache.xpath.internal.SourceTree;
+
+import java.util.*;
 
 public class Board {
 
     private char[][] actualBoard;
+    private char[][] copyBoard;
+    private List<List<Integer>> coords = new ArrayList<List<Integer>>();
 
     public Board(int size) {
         this.actualBoard = createBoard(size);
         replacer();
+        this.copyBoard = deepCopyBoard();
     }
 
     private char[][] createBoard(int size) {
@@ -54,6 +59,48 @@ public class Board {
 
     public char getActualElement(int x, int y){
         return this.actualBoard[x][y];
+    }
+
+    public List<List<Integer>> getListToReveal(int x, int y){
+        this.coords.clear();
+        searchEngine(x, y);
+        return this.coords;
+    }
+
+    private boolean searchEngine(int x, int y){
+        this.coords.add(Arrays.asList(x, y));
+
+        if (this.copyBoard[x][y] == '0') {
+            this.copyBoard[x][y] = 'X';
+
+            int i;
+            int j;
+
+            for (i = x - 1; i <= x + 1; i++) {
+                for (j = y - 1; j <= y + 1; j++) {
+                    if (i >= 0 && j >= 0 && i < this.copyBoard.length && j < this.copyBoard.length && this.copyBoard[i][j] != 'X') {
+                        searchEngine(i, j);
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public List<Character> getAllCharsToDisplay(List<List<Integer>> coords){
+        List<Character> chars = new ArrayList<>();
+        for (List<Integer> coord: coords){
+            chars.add(this.actualBoard[coord.get(0)][coord.get(1)]);
+        }
+        return chars;
+    }
+
+    private char[][] deepCopyBoard(){
+        char[][] current = new char[this.actualBoard.length][this.actualBoard.length];
+        for(int i=0; i<this.actualBoard.length; i++)
+            for(int j=0; j<this.actualBoard[i].length; j++)
+                current[i][j] = this.actualBoard[i][j];
+        return current;
     }
 
     @Override
