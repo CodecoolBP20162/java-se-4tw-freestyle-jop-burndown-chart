@@ -3,7 +3,7 @@ package com.codecool.jopburndown.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "board_user")
 public class User {
 
     @Id
