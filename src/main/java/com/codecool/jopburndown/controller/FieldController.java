@@ -24,7 +24,12 @@ public class FieldController {
         char[][] actualBoard = board.getActualBoard();
         Map<String, Object> params = new HashMap<>();
         params.put("board", actualBoard);
-        System.out.println("kdkdkdkd");
         return new ModelAndView(params, "board");
+    }
+
+    public static char infoAboutSquare(Request req, Response res){
+        int x = Integer.parseInt(req.queryParams("x"));
+        int y = Integer.parseInt(req.queryParams("y"));
+        return board.getActualElement(x, y);
     }
 }

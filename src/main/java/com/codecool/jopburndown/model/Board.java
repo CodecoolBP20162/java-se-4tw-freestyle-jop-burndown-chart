@@ -52,6 +52,10 @@ public class Board {
         return actualBoard;
     }
 
+    public char getActualElement(int x, int y){
+        return this.actualBoard[x][y];
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
