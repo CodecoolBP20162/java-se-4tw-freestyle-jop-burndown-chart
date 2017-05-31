@@ -3,16 +3,20 @@
 
 <div th:include="index::imports"></div>
 <body>
+<div class="container table-container">
+    <div class="col-3">
+        <div class="row">
+            <table class="table table-bordered">
 
-<table class="table table-bordered">
-    <tr th:each="row, iterStat:${board}">
-        <th th:each="num, iterStat2:${row}">
-            <button th:text="${iterStat}">text</button>
-            <button th:text="${iterStat2}">text</button>
-        </th>
-    </tr>
-
-</table>
-
+                <tr th:each="row, iterStat:${board}">
+                    <th th:each="num, iterStat2:${row}">
+                        <button th:text="${iterStat}">text</button>
+                        <button th:text="${iterStat2}">text</button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

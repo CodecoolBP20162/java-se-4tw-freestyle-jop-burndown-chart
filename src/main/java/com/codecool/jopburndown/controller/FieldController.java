@@ -1,6 +1,5 @@
 package com.codecool.jopburndown.controller;
 
-
 import com.codecool.jopburndown.model.Board;
 import spark.ModelAndView;
 import spark.Request;
