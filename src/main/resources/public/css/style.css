@@ -3,11 +3,52 @@
     height: 100%;
     margin: 0 !important;
     padding: 1px !important;
+    color: white;
+    background-color: teal;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.button-value0{
+    background-color: transparent;
+    color: darkcyan;
+    border: none;
+}
+
+.button-value1{
+    background-color: PapayaWhip ;
+    color: palevioletred;
+}
+
+.button-value2{
+    background-color: PapayaWhip ;
+    color: #ff8b17;
+}
+
+.button-value3{
+    background-color: PapayaWhip ;
+    color: red;
+}
+
+.button-value4{
+    background-color: PapayaWhip ;
+    color: #da00e2;
+}
+
+.mine-cell{
+    color: dimgray;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.button-container p{
+    padding-top: 10px;
 }
 
 .button-container{
     padding: 0 !important;
-    text-align: center;
+    text-align: center !important;
     width: 40px !important;
     height: 40px!important;
     border: none !important;

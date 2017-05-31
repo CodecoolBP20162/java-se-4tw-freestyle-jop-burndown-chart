@@ -7,28 +7,28 @@
         <div th:if="${board.length == 5}" class="row">
             <table class="table table-bordered">
                 <tr class="table-row" th:each="row, iterStat:${board}">
-                    <th class="button-container" th:each="num, iterStat2:${row}">
-                        <button class="table-buttons" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
-                    </th>
+                    <td class="button-container" th:each="num, iterStat2:${row}">
+                        <button class="table-buttons" th:id="${iterStat.index} + '' + ${iterStat2.index}" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
+                    </td>
                 </tr>
             </table>
         </div>
         <div th:if="${board.length == 10}" class="row">
             <table class="table table-bordered-10">
                 <tr class="table-row" th:each="row, iterStat:${board}">
-                    <th class="button-container" th:each="num, iterStat2:${row}">
-                        <button class="table-buttons" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
-                    </th>
+                    <td class="button-container" th:each="num, iterStat2:${row}">
+                        <button class="table-buttons" th:id="${iterStat.index} + '' + ${iterStat2.index}" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
+                    </td>
                 </tr>
             </table>
         </div>
         <div th:if="${board.length == 15}" class="row">
             <table class="table table-bordered-15">
                 <tr class="table-row" th:each="row, iterStat:${board}">
-                    <th class="button-container" th:each="num, iterStat2:${row}">
+                    <td class="button-container" th:each="num, iterStat2:${row}">
                         <button class="table-buttons" th:id="${iterStat.index} + '' + ${iterStat2.index}" th:value="${iterStat.index}" th:name="${iterStat2.index}">
                         </button>
-                    </th>
+                    </td>
                 </tr>
             </table>
         </div>
