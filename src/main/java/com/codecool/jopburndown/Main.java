@@ -5,6 +5,8 @@ import com.codecool.jopburndown.controller.MainController;
 import com.codecool.jopburndown.database.DbHandler;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import spark.Request;
+import spark.Response;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import static spark.Spark.*;
 import com.codecool.jopburndown.model.Board;
@@ -13,10 +15,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DbHandler.buildTablesWithUniqueConnection();
 
-        SessionFactory sessionFactory = DbHandler.getSessionFactory();
+        DbHandler dbHandler = DbHandler.getDbHandlerInstance();
+
+        SessionFactory sessionFactory = dbHandler.getSessionFactory();
         Session session = sessionFactory.openSession();
+
+        dbHandler.saveUserToDB(session);
 
         exception(Exception.class, (e, req, res) -> e.printStackTrace());
         staticFileLocation("/public");
