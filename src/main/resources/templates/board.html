@@ -5,9 +5,10 @@
 <body>
 
 <table class="table table-bordered">
-    <tr th:each="row:${board}">
-        <th th:each="num:${row}">
-            <button></button>
+    <tr th:each="row, iterStat:${board}">
+        <th th:each="num, iterStat2:${row}">
+            <button th:text="${iterStat}">text</button>
+            <button th:text="${iterStat2}">text</button>
         </th>
     </tr>
 
