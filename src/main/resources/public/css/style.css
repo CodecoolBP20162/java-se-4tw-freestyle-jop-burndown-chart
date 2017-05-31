@@ -1,0 +1,26 @@
+.button-container{
+    padding: 0 !important;
+    text-align: center;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.table-row{
+    width: 100%;
+}
+.table-bordered{
+    width: 100%;
+}
+
+.board-buttons{
+    width: 50px;
+    height: 50px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.table-container{
+    width: 21%;
+    height: 30%;
+    border: none !important;
+}

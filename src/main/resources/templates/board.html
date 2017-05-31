@@ -3,15 +3,19 @@
 
 <div th:include="index::imports"></div>
 <body>
-
+<div class="container table-container">
+        <div class="col-3">
+            <div class="row">
 <table class="table table-bordered">
-    <tr th:each="row:${board}">
-        <th th:each="num:${row}">
-            <p th:text="${num}">record</p>
+    <tr class="table-row" th:each="row:${board}">
+        <th class="button-container" th:each="num:${row}">
+            <button class="board-buttons" th:value="${num}" th:hidden="${num}">
+            </button>
         </th>
     </tr>
-
 </table>
-
+            </div>
+    </div>
+</div>
 </body>
 </html>
