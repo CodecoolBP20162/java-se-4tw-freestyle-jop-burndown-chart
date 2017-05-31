@@ -1,6 +1,7 @@
 package com.codecool.jopburndown.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Random;
 
 @Entity
@@ -14,7 +15,7 @@ public class Board {
     private int boardSize;
     @Column(name="score" )
     private int score;
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name="user_id")
     private User username;
 
