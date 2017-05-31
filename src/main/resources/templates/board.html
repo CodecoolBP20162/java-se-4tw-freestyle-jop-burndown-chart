@@ -10,7 +10,8 @@
 
                 <tr class="table-row" th:each="row, iterStat:${board}">
                     <th class="button-container" th:each="num, iterStat2:${row}">
-                        <button class="table-buttons" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
+                        <button class="table-buttons" th:id="${iterStat.index} + '' + ${iterStat2.index}" th:value="${iterStat.index}" th:name="${iterStat2.index}">
+                        </button>
                     </th>
                 </tr>
             </table>

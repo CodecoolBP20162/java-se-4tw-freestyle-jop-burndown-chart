@@ -6,6 +6,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +32,11 @@ public class FieldController {
         int x = Integer.parseInt(req.queryParams("x"));
         int y = Integer.parseInt(req.queryParams("y"));
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put("currentChar", board.getActualElement(x, y));
+
+        char currentChar = board.getActualElement(x, y);
+
+        jsonObj.put("currentChar", currentChar);
+        jsonObj.put("coords", Arrays.asList(x, y));
         res.type("application/json");
         return jsonObj;
     }

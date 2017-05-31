@@ -8,7 +8,8 @@ $(document).ready(function () {
             async: true,
             data: {x: x, y: y},
             success: function (resp) {
-                alert(resp["currentChar"]);
+                var selector = '#' + resp["coords"][0] + resp["coords"][1];
+                $(selector).html(resp["currentChar"]);
             }
         });
     });
