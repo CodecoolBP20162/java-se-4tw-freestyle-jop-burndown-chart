@@ -27,36 +27,36 @@ $(document).ready(function () {
                         //$(".button-container").html("<p class='glyphicon glyphicon-remove'></p>")
                         $(".table-buttons").prop('disabled', true);
                         $(selector).parent().html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
-                        $("#evaluator-button").remove();
                         $("#game-over").html("<p>GAME OVER</p><form action='/'><button type='submit'>NEW GAME</button></form> ")
                     }else {
                         $(selector).html(resp["currentChars"][i]);
                         $(selector).addClass("revealed button-value" + resp["currentChars"][i])
-                        $(selector).removeClass("unchecked");
+                        $(selector).parent().removeClass("unchecked");
                         $(selector).removeClass("glyphicon-eye-open");
                         $(selector).removeClass("glyphicon");
                     }
+                   evaluator();
                 }
             }
         });
     });
 
-    $("#evaluator-button").click(function () {
+    function evaluator() {
         $.ajax({
             url: "/evaluate",
             type: "GET",
             async: true,
             success: function (resp) {
                 if($(".button-container").length - $(".revealed").length == resp["numberOfMines"]){
-                    $("#evaluator-button").remove();
                     $(".table-buttons").prop('disabled', true);
-                    $("#game-over").html("<p>You survive the minefield!</p><form action='/'><button type='submit'>NEW GAME</button></form>");
-                }else{
-                    $("#game-over").html("<p>You are not passed the minefield yet, but if you want a new game just push the button, chicken!</p><form action='/'><button type='submit'>NEW GAME</button></form>");
-
+                    $(".unchecked").html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
+                    $("#game-over").html("<p>Congratulation! You survive the minefield!</p><form action='/'><button type='submit'>NEW GAME</button></form>");
                 }
+            },
+            error: function () {
+                alert("something went wrong")
             }
         });
-    });
+    }
 
 });
