@@ -8,10 +8,9 @@
         <div class="row">
             <table class="table table-bordered">
 
-                <tr th:each="row, iterStat:${board}">
-                    <th th:each="num, iterStat2:${row}">
-                        <button th:text="${iterStat}">text</button>
-                        <button th:text="${iterStat2}">text</button>
+                <tr class="table-row" th:each="row, iterStat:${board}">
+                    <th class="button-container" th:each="num, iterStat2:${row}">
+                        <button class="table-buttons" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
                     </th>
                 </tr>
             </table>
