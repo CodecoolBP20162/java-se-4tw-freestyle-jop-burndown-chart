@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/login.css"/>
+
+</head>
+
+<body>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'/>
+
+
+
+
+<form method="post" action="index.html">
+    <div class="box">
+        <h1>Register</h1>
+
+        <input id="name" type="name" name="name" placeholder="Enter name" onFocus="field_focus(this, 'Enter name');" onblur="field_blur(this, 'Enter name')" class="email"/>
+        <input id="mail" type="email" name="email" value="email" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" />
+        <input  id="psw" type="password" name="email" value="email" onFocus="field_focus(this, 'email');" onblur="field_blur(this, 'email');" class="email" />
+        <input type="submit" id="register" class="btn btn-success"/>
+        <input type="submit" id="click" class="btn btn-success" value="Back to Shop" onclick="window.location='/'" />
+
+    </div> <!-- End Box -->
+
+</form>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+
+<script src="/js/login.js"></script>
+
+</body>
+</html>
