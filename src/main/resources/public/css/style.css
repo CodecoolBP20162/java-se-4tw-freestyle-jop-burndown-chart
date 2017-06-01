@@ -145,3 +145,46 @@ ul {
 #logout-button{
     float: right;
 }
+
+#motivation-message-conatiner {
+    margin: 20px;
+    text-align: center;
+    background-color: darkslategrey;
+    padding: 20px;
+}
+
+#motivation-message{
+    color: rgba(204, 255, 229, 1);
+}
+
+#get-motivation, #set-motivation, #motivation-message-board{
+    margin: 10px;
+}
+
+#motivation-message-board{
+    width: 50%;
+}
+
+#logout-button{
+    font-weight: bold;
+}
+
+#logout-button:hover{
+    color: #f4f9fe !important;
+}
+
+#title-button{
+    font-weight: bold;
+}
+
+#title-button:hover{
+    color: cadetblue;
+}
+
+.difficulties{
+    font-weight: bold;
+}
+
+#difficulty-form{
+    margin: 10px;
+}

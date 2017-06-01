@@ -7,7 +7,7 @@ $(document).ready(function () {
             type: "GET",
             async: true,
             success: function (resp) {
-                $('#motivation-message').attr('value', resp['message']);
+                $('#motivation-message').html(resp['message']);
             },
             error: function () {
                 alert("something went wrong")

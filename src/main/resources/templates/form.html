@@ -5,24 +5,29 @@
 <div style="text-align: center"><h3 id="choice-message">Minesweeper Pro Master World Championship Edition 3000</h3>
 </div>
 <form id="difficulty-form" action="/get_size" method="post">
-    <div>
-        <input type="radio" th:name="${'size'}" value="5" checked="checked"/><h4>Easy</h4>
+    <div><span class="difficulties">Easy</span>
+
+        <input type="radio" th:name="${'size'}" value="5" checked="checked"/>
     </div>
-    <div>
-        <input type="radio" th:name="${'size'}" value="10"/><h4>Normal</h4>
+    <div><span class="difficulties">Normal</span>
+
+        <input type="radio" th:name="${'size'}" value="10"/>
     </div>
-    <div>
-        <input type="radio" th:name="${'size'}" value="15"/><h4>Hard</h4>
+    <div><span class="difficulties">Hard</span>
+
+        <input type="radio" th:name="${'size'}" value="15"/>
     </div>
     <button type="submit" class="btn btn-primary active">Build it!</button>
-    <h1 id="motivation-message">segg</h1>
-</form>
 
-<div>
-<input type="text" id="motivation-message-board" rows="4" cols="50" maxlength="80">
-</input>
-    <button id="get-motivation">Motivation</button>
-    <button id="set-motivation">New motivational</button>
+</form>
+<div id="motivation-message-conatiner">
+    <h3 id="motivation-message">You are great!</h3>
+    <input title="your new message" type="text" id="motivation-message-board" rows="1" cols="100" maxlength="80">
+    </input>
+    <div>
+    <button id="get-motivation" class="btn btn-primary">Get new motivational message</button>
+    <button id="set-motivation" class="btn btn-primary">Set motivational message</button>
+    </div>
 </div>
 </body>
 </html>

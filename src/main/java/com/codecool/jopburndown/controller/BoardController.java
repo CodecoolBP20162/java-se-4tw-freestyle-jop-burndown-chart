@@ -20,6 +20,7 @@ import java.util.*;
  * within a game. Every communication between user and the actual board instance is done here.
  */
 public class BoardController {
+
     private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
     private static Board board;
 
