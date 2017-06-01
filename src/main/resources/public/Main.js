@@ -1,5 +1,37 @@
 $(document).ready(function () {
 
+    $('#get-motivation').click(function () {
+        $.ajax({
+            url: "/motivation",
+            type: "GET",
+            async: true,
+            success: function (resp) {
+                $('#motivation-message').attr('value', resp['message']);
+            },
+            error: function () {
+                alert("something went wrong")
+            }
+        });
+    });
+
+    $('#set-motivation').click(function () {
+        alert("setben vok");
+        var newMessage = $('#motivation-message-board').val();
+        alert(newMessage);
+        $.ajax({
+            url: "/set_motivation",
+            type: "POST",
+            async: true,
+            data: {message: newMessage},
+            success: function (resp) {
+                $('#motivation-message-board').val(resp['message']);
+            },
+            error: function () {
+                alert("something went wrong")
+            }
+        });
+    });
+
     $('.table-buttons').bind("contextmenu",function(e) {
         if(!($(this).hasClass("revealed"))){
         if ($(this).hasClass("glyphicon")) {
