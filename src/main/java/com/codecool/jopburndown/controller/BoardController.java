@@ -82,7 +82,7 @@ public class BoardController {
 
     /**
      * This method will return a jsonObj containing the number of all mines present in the
-     * board. 
+     * board.
      * @param req
      * @param res
      * @return
