@@ -22,13 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
-
         SessionFactory sessionFactory = dbHandler.getSessionFactory();
         Session session = sessionFactory.openSession();
-
-        //dbHandler.saveUserToDB(session);
 
         exception(Exception.class, (e, req, res) -> e.printStackTrace());
         staticFileLocation("/public");
@@ -44,9 +40,8 @@ public class Main {
 
         get("/board", FieldController::showBoard, new ThymeleafTemplateEngine());
 
-        post("/login", MainController::renderIndex , new ThymeleafTemplateEngine());
+        post("/register", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitRegister(req, session));});
 
-        post("/register", UserController::submitRegister, new ThymeleafTemplateEngine());
-
+        post("/login", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitUser(req, session));});
     }
 }
