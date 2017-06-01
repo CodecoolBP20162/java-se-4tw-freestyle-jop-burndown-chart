@@ -6,6 +6,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -48,6 +49,9 @@ public class MainController {
         if(req.session().attributes().contains("time")){
             Date oldTime = req.session().attribute("time");
             long milSec = new Date().getTime() - oldTime.getTime();
+            Date date = new Date(milSec);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("mm-ss-SS");
+            String format =  dateFormat.format(date);
             req.session().removeAttribute("time");
         }
         return response;
