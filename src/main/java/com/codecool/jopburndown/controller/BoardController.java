@@ -49,6 +49,7 @@ public class BoardController {
         char[][] actualBoard = board.getActualBoard();
         Map<String, Object> params = new HashMap<>();
         params.put("board", actualBoard);
+        req.session().attribute("time",new Date());
         return new ModelAndView(params, "board");
     }
 

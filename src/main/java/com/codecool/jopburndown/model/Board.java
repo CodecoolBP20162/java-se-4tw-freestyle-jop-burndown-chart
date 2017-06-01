@@ -24,7 +24,7 @@ public class Board {
     @Column(name = "board_size")
     private int boardSize;
     @Column(name = "score")
-    private int score;
+    private String score;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User username;
@@ -38,7 +38,7 @@ public class Board {
     @Transient
     public int mineCounter = 0;
 
-    public Board(int boardSize, int score, User username) {
+    public Board(int boardSize, String score, User username) {
         this.boardSize = boardSize;
         this.score = score;
         this.username = username;
