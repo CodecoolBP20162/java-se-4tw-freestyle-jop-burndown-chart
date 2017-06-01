@@ -58,6 +58,8 @@ public class Main {
 
         post("/get_size", BoardController::createNewBoard);
 
+        post("/winning_time", MainController::getWinningTime);
+
         get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 
         post("/retrieve_data", BoardController::infoAboutSquare);

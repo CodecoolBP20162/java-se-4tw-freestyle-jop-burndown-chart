@@ -55,6 +55,16 @@ $(document).ready(function () {
                     $("#congratulation-and-new-game").removeAttr("style");
                     $("#congratulation-10-and-new-game").removeAttr("style");
                     $("#congratulation-15-and-new-game").removeAttr("style");
+                    
+                    $.ajax({
+                        url: "/winning_time",
+                        type: "POST",
+                        async: true,
+                        data: {"status":"ok"},
+                        success:function () {
+                            
+                        }
+                    });
                 }
             },
             error: function () {
