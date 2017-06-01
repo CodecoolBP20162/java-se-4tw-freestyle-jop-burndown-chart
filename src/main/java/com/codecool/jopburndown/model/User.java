@@ -19,7 +19,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean authenticrenderIndexWithUserate(String password) {
+    public boolean authenticate(String password) {
         return BCrypt.checkpw(password, this.password);
     }
 

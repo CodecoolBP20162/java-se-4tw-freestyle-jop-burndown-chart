@@ -5,6 +5,7 @@ import com.codecool.jopburndown.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Request;
@@ -67,7 +68,7 @@ public class DbHandler {
     public void saveUserToDB(Request req, Session session) {
 
         session.beginTransaction();
-        User user = new User(req.queryParams("username"), req.queryParams("password"));
+        User user = new User(req.queryParams("username"), BCrypt.hashpw(req.queryParams("password"),BCrypt.gensalt(10)));
         session.save(user);
         session.getTransaction().commit();
         logger.info("Successfully saved the username and the password.");
@@ -85,7 +86,7 @@ public class DbHandler {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
         for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)){
+            if (user.authenticate(password)){
                 req.session().attribute("user", user);
                 logger.info("Successful login");
             }
