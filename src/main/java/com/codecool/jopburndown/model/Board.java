@@ -55,6 +55,14 @@ public class Board {
         }
     }
 
+    private char[][] deepCopyBoard(){
+        char[][] current = new char[this.actualBoard.length][this.actualBoard.length];
+        for(int i=0; i<this.actualBoard.length; i++)
+            for(int j=0; j<this.actualBoard[i].length; j++)
+                current[i][j] = this.actualBoard[i][j];
+        return current;
+    }
+
     public char[][] getActualBoard() {
         return actualBoard;
     }
@@ -74,18 +82,15 @@ public class Board {
 
         if (this.copyBoard[x][y] == '0') {
             this.copyBoard[x][y] = 'X';
-
-            int i;
-            int j;
-
-            for (i = x - 1; i <= x + 1; i++) {
-                for (j = y - 1; j <= y + 1; j++) {
+            for (int i = x - 1; i <= x + 1; i++) {
+                for (int j = y - 1; j <= y + 1; j++) {
                     if (i >= 0 && j >= 0 && i < this.copyBoard.length && j < this.copyBoard.length && this.copyBoard[i][j] != 'X') {
                         searchEngine(i, j);
                     }
                 }
             }
         }
+        this.copyBoard[x][y] = 'X';
         return true;
     }
 
@@ -95,14 +100,6 @@ public class Board {
             chars.add(this.actualBoard[coord.get(0)][coord.get(1)]);
         }
         return chars;
-    }
-
-    private char[][] deepCopyBoard(){
-        char[][] current = new char[this.actualBoard.length][this.actualBoard.length];
-        for(int i=0; i<this.actualBoard.length; i++)
-            for(int j=0; j<this.actualBoard[i].length; j++)
-                current[i][j] = this.actualBoard[i][j];
-        return current;
     }
 
     @Override

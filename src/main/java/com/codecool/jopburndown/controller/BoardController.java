@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.*;
 
-public class FieldController {
+public class BoardController {
 
     private static Board board;
 
@@ -30,15 +30,13 @@ public class FieldController {
     }
 
     public static JSONObject infoAboutSquare(Request req, Response res){
-
-        System.out.println(board);
-
         JSONObject jsonObj = new JSONObject();
+        List<Character> currentChars = new ArrayList<>();
+        List<List<Integer>> coordsOfCharsToDisplay;
+
         int x = Integer.parseInt(req.queryParams("x"));
         int y = Integer.parseInt(req.queryParams("y"));
         char actualChar = board.getActualElement(x, y);
-        List<Character> currentChars = new ArrayList<>();
-        List<List<Integer>> coordsOfCharsToDisplay;
 
         if (actualChar == '0'){
             coordsOfCharsToDisplay = board.getListToReveal(x, y);
@@ -50,13 +48,9 @@ public class FieldController {
 
         jsonObj.put("currentChars", currentChars);
         jsonObj.put("coords", coordsOfCharsToDisplay);
-
         res.type("application/json");
-
         return jsonObj;
     }
-
-
 
     public static JSONObject countMines(Request req, Response res){
         JSONObject jsonObj = new JSONObject();

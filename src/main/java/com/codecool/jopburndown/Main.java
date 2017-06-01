@@ -1,11 +1,10 @@
 package com.codecool.jopburndown;
 
 
-import com.codecool.jopburndown.controller.FieldController;
+import com.codecool.jopburndown.controller.BoardController;
 import com.codecool.jopburndown.controller.MainController;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import static spark.Spark.*;
-import com.codecool.jopburndown.model.Board;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,14 +13,14 @@ public class Main {
         staticFileLocation("/public");
         port(8888);
 
-        get("/", MainController::renderIndex, new ThymeleafTemplateEngine());
+        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
-        post("/get_size", FieldController::createNewBoard);
+        post("/get_size", BoardController::createNewBoard);
 
-        get("/board", FieldController::showBoard, new ThymeleafTemplateEngine());
+        get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 
-        post("/retrieve_data", FieldController::infoAboutSquare);
+        post("/retrieve_data", BoardController::infoAboutSquare);
 
-        get("/evaluate", FieldController::countMines);
+        get("/evaluate", BoardController::countMines);
     }
 }

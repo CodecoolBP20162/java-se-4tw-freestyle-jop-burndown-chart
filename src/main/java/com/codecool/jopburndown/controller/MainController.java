@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class MainController {
 
-    public static ModelAndView renderIndex(Request req, Response res) {
+    public static ModelAndView renderDifficultyForm(Request req, Response res) {
         HashMap<String, String> map = new HashMap<>();
         return new ModelAndView(map,"form");
     }
