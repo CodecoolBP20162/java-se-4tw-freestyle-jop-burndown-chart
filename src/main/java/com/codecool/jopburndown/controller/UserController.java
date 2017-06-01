@@ -31,6 +31,11 @@ public class UserController {
         return new ModelAndView(map,"login");
     }
 
+    public static ModelAndView logout(Request request){
+        request.session().removeAttribute("user");
+        return new ModelAndView(map,"login");
+    }
+
     /**
      * Renders the register page
      * @param req Request
