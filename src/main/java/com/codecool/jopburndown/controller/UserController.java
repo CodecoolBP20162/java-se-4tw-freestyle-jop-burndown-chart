@@ -50,7 +50,7 @@ public class UserController {
      * Redirects to the login page
      * @param req
      * @param session
-     * @return
+     * @return ModelAndView
      */
     public static ModelAndView submitRegister(Request req, Session session){
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
@@ -63,7 +63,7 @@ public class UserController {
      * Redirects to the board page
      * @param req
      * @param session
-     * @return
+     * @return ModelAndView
      */
     public static ModelAndView submitUser(Request req, Session session){
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
