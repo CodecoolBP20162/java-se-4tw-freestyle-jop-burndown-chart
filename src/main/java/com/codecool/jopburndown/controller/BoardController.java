@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import spark.Session;
+
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +33,7 @@ public class BoardController {
      */
     public static Response createNewBoard(Request req, Response res){
         int size = Integer.parseInt(req.queryParams("size"));
+        req.session().attribute("size",size);
         board = new Board(size);
         res.redirect("/board");
         logger.info("Table creation executed.\nactual board:\n{}", board);
@@ -49,6 +53,7 @@ public class BoardController {
         Map<String, Object> params = new HashMap<>();
         params.put("board", actualBoard);
         req.session().attribute("time",new Date());
+//        params.put("boards",Board.getAllScore(session));
         return new ModelAndView(params, "board");
     }
 
