@@ -22,4 +22,12 @@ public class User {
     public boolean authenticrenderIndexWithUserate(String password) {
         return BCrypt.checkpw(password, this.password);
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
