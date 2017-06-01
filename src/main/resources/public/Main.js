@@ -24,29 +24,8 @@ $(document).ready(function () {
                 success:function () {
                     location.href ="/";
                 }
-
         })
-
     });
-
-
-
-
-    $('#modal').onclick = function(event) {
-        var modal = document.getElementById('myModal');
-        modal.style.display = "block";
-    }
-
-    span.onclick = function(event) {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            var modal = document.getElementById('myModal');
-            modal.style.display = "none";
-        }
-    }
 
 
     $('#set-motivation').click(function () {
