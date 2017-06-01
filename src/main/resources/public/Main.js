@@ -13,8 +13,9 @@ $(document).ready(function () {
     });
 
     $(".table-buttons").click(function () {
-        var x = $(this).attr("value");
-        var y = $(this).attr("name");
+        var idParsed = $(this['id'].split('_'));
+        var x = idParsed[0];
+        var y = idParsed[1];
         $.ajax({
             url: "/retrieve_data",
             type: "POST",
@@ -22,14 +23,13 @@ $(document).ready(function () {
             data: {x: x, y: y},
             success: function (resp) {
                 for (var i = 0; i < resp["currentChars"].length; i++) {
-                    var selector = '#' + resp["coords"][i][0] + resp["coords"][i][1];
+                    var selector = '#' + resp["coords"][i][0] + "_" + resp["coords"][i][1];
                     if(resp["currentChars"][i] == '9') {
-                        //$(".button-container").html("<p class='glyphicon glyphicon-remove'></p>")
                         $(".table-buttons").prop('disabled', true);
                         $(selector).parent().html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
-                        $(".game-over").html("<h1 class='game-over-message'>GAME OVER</h1><form action='/'><button type='submit'  class='btn btn-primary active'>NEW GAME</button></form> ")
-                        $(".game-over-10").html("<h1 class='game-over-message'>GAME OVER</h1><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form> ")
-                        $(".game-over-15").html("<h1 class='game-over-message'>GAME OVER</h1><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form> ")
+                        $("#game-over-and-new-game").removeAttr("style");
+                        $("#game-over-10-and-new-game").removeAttr("style");
+                        $("#game-over-15-and-new-game").removeAttr("style");
                     }else {
                         $(selector).html(resp["currentChars"][i]);
                         $(selector).addClass("revealed button-value" + resp["currentChars"][i])
@@ -52,9 +52,9 @@ $(document).ready(function () {
                 if($(".button-container").length - $(".revealed").length == resp["numberOfMines"]){
                     $(".table-buttons").prop('disabled', true);
                     $(".unchecked").html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
-                    $(".game-over").html("<h2 class='congratulation-message'>Congratulation!</h2><p class='congratulation-message'>You survived the minefield!</p><form action='/'><button type='submit'class='btn btn-primary active'>NEW GAME</button></form>");
-                    $(".game-over-10").html("<h1 class='congratulation-message'>Congratulation!</h1><p class='congratulation-message'>You survived the minefield!</p><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form>");
-                    $(".game-over-15").html("<h1 class='congratulation-message'>Congratulation!</h1><p class='congratulation-message'>You survived the minefield!</p><form action='/'><button type='submit' class='btn btn-primary active'>NEW GAME</button></form>");
+                    $("#congratulation-and-new-game").removeAttr("style");
+                    $("#congratulation-10-and-new-game").removeAttr("style");
+                    $("#congratulation-15-and-new-game").removeAttr("style");
                 }
             },
             error: function () {

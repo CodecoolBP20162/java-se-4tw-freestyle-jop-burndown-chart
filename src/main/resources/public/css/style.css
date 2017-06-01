@@ -118,19 +118,18 @@ table {
 
 }
 
-.game-over{
+#game-over-and-new-game, #congratulation-and-new-game{
     width: 19%;
     text-align: center;
 }
-.game-over-10{
+#game-over-10-and-new-game, #congratulation-10-and-new-game{
     width: 38%;
     text-align: center;
 
 }
-.game-over-15{
+#game-over-15-and-new-game, #congratulation-15-and-new-game {
     width: 57%;
     text-align: center;
-
 }
 
 #choice-message{
