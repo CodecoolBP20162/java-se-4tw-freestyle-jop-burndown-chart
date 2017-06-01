@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +42,7 @@ public class BoardController {
      * of the instantiated board.
      * @param req
      * @param res
-     * @return
+     * @return ModelAndView
      */
     public static ModelAndView showBoard(Request req, Response res){
         char[][] actualBoard = board.getActualBoard();
@@ -59,7 +58,7 @@ public class BoardController {
      * should be revealed to the user.
      * @param req
      * @param res
-     * @return
+     * @return JSONObject
      */
     public static JSONObject infoAboutSquare(Request req, Response res){
         JSONObject jsonObj = new JSONObject();
@@ -89,7 +88,7 @@ public class BoardController {
      * board.
      * @param req
      * @param res
-     * @return
+     * @return JSONObject
      */
     public static JSONObject countMines(Request req, Response res){
         JSONObject jsonObj = new JSONObject();
