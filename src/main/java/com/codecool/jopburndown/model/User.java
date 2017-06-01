@@ -30,11 +30,12 @@ public class User {
         return BCrypt.checkpw(password, this.password);
     }
 
+    /**
+     * Returns the current user's name
+     *
+     * @return String
+     */
     public String getUsername() {
         return username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 }

@@ -3,21 +3,21 @@ $(document).ready(function () {
 
 
     $('#register').click(function (event) {
-        event.preventDefault();
-        var name = document.getElementById("name").value;
-        var psw = document.getElementById("psw").value;
+      event.preventDefault();
+      var name=document.getElementById("name").value;
+      var psw=document.getElementById("psw").value;
 
-        $.ajax({
+      $.ajax({
 
-            url: "/register",
-            type: "POST",
-            data: {"username": name, "password": psw},
-            dataType: "html",
-            success: function () {
-                location.href = "/";
-            }
-        });
-    })
+        url:"/register",
+        type:"POST",
+        data:{"username":name,"password":psw},
+        dataType:"html",
+        success:function () {
+            location.href = "/";
+        }
+          });
+    });
 
     $('.btn').click(function (event) {
         event.preventDefault();

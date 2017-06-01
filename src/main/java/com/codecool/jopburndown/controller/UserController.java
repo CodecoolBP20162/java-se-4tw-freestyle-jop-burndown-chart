@@ -31,9 +31,15 @@ public class UserController {
         return new ModelAndView(map, "login");
     }
 
-    public static ModelAndView logout(Request req){
+    /**
+     * Logouts the user, removes user from current session
+     *
+     * @param req Request
+     * @return ModelAndView
+     */
+    public static ModelAndView logout(Request req) {
         req.session().removeAttribute("user");
-        return new ModelAndView(map,"login");
+        return new ModelAndView(map, "login");
     }
 
     /**

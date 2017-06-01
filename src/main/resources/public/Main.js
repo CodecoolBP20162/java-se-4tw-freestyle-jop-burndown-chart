@@ -106,8 +106,8 @@ $(document).ready(function () {
                         url: "/winning_time",
                         type: "POST",
                         async: true,
-                        data: {"status":"ok"},
-                        success:function (data) {
+                        data: {"status": "ok"},
+                        success: function (data) {
                             var time = data["time"];
                             console.log(time);
                             $('#score').text(time);
