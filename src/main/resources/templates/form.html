@@ -5,6 +5,7 @@
 <div style="text-align: center"><h3 id="choice-message">Minesweeper Pro Master World Championship Edition 3000</h3>
 </div>
 <form id="difficulty-form" action="/get_size" method="post">
+    <h3 id="choose-difficult">Choose difficult:</h3>
     <div><span class="difficulties">Easy</span>
 
         <input type="radio" th:name="${'size'}" value="5" checked="checked"/>
@@ -17,7 +18,7 @@
 
         <input type="radio" th:name="${'size'}" value="15"/>
     </div>
-    <button type="submit" class="btn btn-primary active">Build it!</button>
+    <button type="submit" id="play-button" class="btn btn-primary active">PLAY</button>
 
 </form>
 <div id="motivation-message-conatiner">

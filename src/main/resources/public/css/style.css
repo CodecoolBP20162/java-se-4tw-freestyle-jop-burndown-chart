@@ -140,7 +140,6 @@ table {
 }
 
 ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
 }
@@ -172,10 +171,6 @@ ul {
     font-weight: bold;
 }
 
-#logout-button:hover {
-    color: #f4f9fe !important;
-}
-
 #title-button {
     font-weight: bold;
 }
@@ -188,6 +183,25 @@ ul {
     font-weight: bold;
 }
 
+#choose-difficult{
+    margin-top: 30px;
+}
+
 #difficulty-form {
     margin: 10px;
 }
+
+#play-button{
+    margin: 20px;
+    width: 25%;
+    height: 80px;
+    text-align: center;
+    font-size: 300%;
+    font-weight: bold;
+}
+
+a:hover{
+    text-decoration: dashed !important;
+}
+
+
