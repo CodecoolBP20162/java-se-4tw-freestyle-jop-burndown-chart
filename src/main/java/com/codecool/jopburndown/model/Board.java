@@ -74,7 +74,6 @@ public class Board {
     public List<List<Integer>> getListToReveal(int x, int y){
         this.coords.clear();
         searchEngine(x, y);
-        System.out.println(coords);
         return this.coords;
     }
 
