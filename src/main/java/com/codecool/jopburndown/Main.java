@@ -28,7 +28,7 @@ public class Main {
         SessionFactory sessionFactory = dbHandler.getSessionFactory();
         Session session = sessionFactory.openSession();
 
-        dbHandler.saveUserToDB(session);
+        //dbHandler.saveUserToDB(session);
 
         exception(Exception.class, (e, req, res) -> e.printStackTrace());
         staticFileLocation("/public");
@@ -43,6 +43,10 @@ public class Main {
         post("/get_size", FieldController::createNewBoard);
 
         get("/board", FieldController::showBoard, new ThymeleafTemplateEngine());
+
+        post("/login", MainController::renderIndex , new ThymeleafTemplateEngine());
+
+        post("/register", UserController::submitRegister, new ThymeleafTemplateEngine());
 
     }
 }
