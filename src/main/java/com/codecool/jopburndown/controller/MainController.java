@@ -3,6 +3,7 @@ package com.codecool.jopburndown.controller;
 import com.codecool.jopburndown.database.DbHandler;
 import com.codecool.jopburndown.model.Board;
 import org.hibernate.Session;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
@@ -60,7 +61,8 @@ public class MainController {
      * @param session Session
      * @return Response
      */
-    public static Response getWinningTime( Request req ,Response response, Session session){
+    public static JSONObject getWinningTime( Request req ,Response res, Session session){
+        JSONObject jsonObj = null;
         if(req.session().attributes().contains("time")){
             Date oldTime = req.session().attribute("time");
             long milSec = new Date().getTime() - oldTime.getTime();
@@ -70,7 +72,10 @@ public class MainController {
             req.session().removeAttribute("time");
             DbHandler dbHandler =   DbHandler.getDbHandlerInstance();
             dbHandler.saveScoretoBoard(req,session,format);
+            jsonObj = new JSONObject();
+            jsonObj.put("time", format);
+            res.type("application/json");
         }
-        return response;
+        return jsonObj;
     }
 }

@@ -107,7 +107,10 @@ $(document).ready(function () {
                         type: "POST",
                         async: true,
                         data: {"status":"ok"},
-                        success:function () {
+                        success:function (data) {
+                            var time = data["time"];
+                            console.log(time);
+                            $('#score').text(time);
                             
                         }
                     });
