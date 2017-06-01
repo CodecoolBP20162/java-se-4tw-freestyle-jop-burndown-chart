@@ -1,4 +1,4 @@
-.table-buttons{
+.table-buttons {
     width: 100%;
     height: 100%;
     margin: 0 !important;
@@ -9,87 +9,88 @@
     font-weight: bold;
 }
 
-.button-value0{
+.button-value0 {
     background-color: transparent;
     color: darkcyan;
     border: none;
 }
 
-.button-value1{
-    background-color: PapayaWhip ;
+.button-value1 {
+    background-color: PapayaWhip;
     color: palevioletred;
 }
 
-.button-value2{
-    background-color: PapayaWhip ;
+.button-value2 {
+    background-color: PapayaWhip;
     color: #ff8b17;
 }
 
-.button-value3{
-    background-color: PapayaWhip ;
+.button-value3 {
+    background-color: PapayaWhip;
     color: red;
 }
 
-.button-value4{
-    background-color: PapayaWhip ;
+.button-value4 {
+    background-color: PapayaWhip;
     color: #da00e2;
 }
 
-.button-value5{
-    background-color: PapayaWhip ;
+.button-value5 {
+    background-color: PapayaWhip;
     color: #08e211;
 }
 
-.button-value6{
-    background-color: PapayaWhip ;
+.button-value6 {
+    background-color: PapayaWhip;
     color: #ff8986;
 }
 
-.button-value7{
-    background-color: PapayaWhip ;
+.button-value7 {
+    background-color: PapayaWhip;
     color: #030dff;
 }
 
-.button-value8{
-    background-color: PapayaWhip ;
+.button-value8 {
+    background-color: PapayaWhip;
     color: #ff03ec;
 }
 
-.mine-cell{
+.mine-cell {
     color: dimgray;
     font-size: 20px;
     padding: 0;
     margin: 0;
 }
 
-.button-container p{
+.button-container p {
     padding-top: 10px;
 }
 
-.button-container{
+.button-container {
     padding: 0 !important;
     text-align: center !important;
     width: 40px !important;
-    height: 40px!important;
+    height: 40px !important;
     border: none !important;
 }
 
-.table-row{
+.table-row {
     width: 100%;
 }
 
-.table-bordered{
+.table-bordered {
     width: 19%;
 }
-.table-bordered-10{
+
+.table-bordered-10 {
     width: 38%;
 }
 
-.table-bordered-15{
+.table-bordered-15 {
     width: 57%;
 }
 
-.table-container{
+.table-container {
     border: none !important;
     padding: auto !important;
 }
@@ -98,11 +99,11 @@ table {
     border-spacing: 0 !important;
 }
 
-#difficulty-form{
+#difficulty-form {
     text-align: center;
 }
 
-.congratulation-message{
+.congratulation-message {
     font-family: "Droid Sans";
     font-weight: bold;
     color: brown;
@@ -110,7 +111,7 @@ table {
 
 }
 
-.game-over-message{
+.game-over-message {
     font-family: "Droid Sans";
     font-weight: bold;
     color: cadetblue;
@@ -118,21 +119,23 @@ table {
 
 }
 
-#game-over-and-new-game, #congratulation-and-new-game{
+#game-over-and-new-game, #congratulation-and-new-game {
     width: 19%;
     text-align: center;
 }
-#game-over-10-and-new-game, #congratulation-10-and-new-game{
+
+#game-over-10-and-new-game, #congratulation-10-and-new-game {
     width: 38%;
     text-align: center;
 
 }
+
 #game-over-15-and-new-game, #congratulation-15-and-new-game {
     width: 57%;
     text-align: center;
 }
 
-#choice-message{
+#choice-message {
     font-weight: bold;
 }
 
@@ -142,7 +145,7 @@ ul {
     padding: 0;
 }
 
-#logout-button{
+#logout-button {
     float: right;
 }
 
@@ -153,38 +156,38 @@ ul {
     padding: 20px;
 }
 
-#motivation-message{
+#motivation-message {
     color: rgba(204, 255, 229, 1);
 }
 
-#get-motivation, #set-motivation, #motivation-message-board{
+#get-motivation, #set-motivation, #motivation-message-board {
     margin: 10px;
 }
 
-#motivation-message-board{
+#motivation-message-board {
     width: 50%;
 }
 
-#logout-button{
+#logout-button {
     font-weight: bold;
 }
 
-#logout-button:hover{
+#logout-button:hover {
     color: #f4f9fe !important;
 }
 
-#title-button{
+#title-button {
     font-weight: bold;
 }
 
-#title-button:hover{
+#title-button:hover {
     color: cadetblue;
 }
 
-.difficulties{
+.difficulties {
     font-weight: bold;
 }
 
-#difficulty-form{
+#difficulty-form {
     margin: 10px;
 }

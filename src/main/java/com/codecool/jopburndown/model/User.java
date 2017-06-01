@@ -1,7 +1,8 @@
 package com.codecool.jopburndown.model;
 
-import javax.persistence.*;
 import org.mindrot.jbcrypt.BCrypt;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "board_user")
@@ -21,6 +22,7 @@ public class User {
 
     /**
      * Authenticates the user password with the given input
+     *
      * @param password String
      * @return boolean
      */

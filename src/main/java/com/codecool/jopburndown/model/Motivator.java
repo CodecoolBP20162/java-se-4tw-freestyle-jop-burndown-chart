@@ -12,7 +12,7 @@ public class Motivator {
     private static Motivator instance = null;
     private Deque<String> motivationMessages = new LinkedList<>();
 
-    private Motivator(){
+    private Motivator() {
         motivationMessages.add("Ne legyél csirke, me' a csirkéket megeszik! - Ismeretlen, alkalmi ivócimbora");
         motivationMessages.add("Zöld sör után, a hó is zöld. - ezt most találtam ki");
         motivationMessages.add("Az élettel az ember úgy van, sodródik, mint bacilus a h*gyban. - Blöró");
@@ -25,25 +25,24 @@ public class Motivator {
         motivationMessages.add("Aki feladja, az hamarabb megy haza!- Konfúciusz");
         motivationMessages.add("Ne legyél b*lfasz, inkább legyél király! - Szókratész");
         motivationMessages.add("Nyomd már meg Build it! feliratú gombot, aztán játszá'! - a rosszhangulatú szerver");
-
-
-        ;
-
-
     }
 
-    /**This method responsible for singletonish operation. If it have an instance
+    /**
+     * This method responsible for singletonish operation. If it have an instance
      * it don't make a new one.
+     *
      * @return Motivator
      */
-public static Motivator getInstance(){
-        if(instance == null){
+    public static Motivator getInstance() {
+        if (instance == null) {
             instance = new Motivator();
         }
         return instance;
-}
+    }
+
     /**
      * This method bring back a randomly choosed element from the motivationMessages deque.
+     *
      * @return String
      */
     public String getMotivationMessage() {

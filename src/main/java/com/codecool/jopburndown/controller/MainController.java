@@ -26,18 +26,19 @@ public class MainController {
         }
         HashMap<String, String> map = new HashMap<>();
         logger.info("Index page access");
-        return new ModelAndView(map,"form");
+        return new ModelAndView(map, "form");
     }
 
     /**
      * This method renders the main page. It will return a Spark ModelAndView object.
+     *
      * @param req for Spark
      * @param res for Spark
      * @return ModelAndView
      */
     public static ModelAndView renderDifficultyForm(Request req, Response res) {
         HashMap<String, String> map = new HashMap<>();
-        return new ModelAndView(map,"form");
+        return new ModelAndView(map, "form");
     }
 
     public static ModelAndView renderIndexWithUser(Request req, Response res) {
@@ -51,21 +52,22 @@ public class MainController {
      * Upon a won game, saves the completed time
      * with a min-sec-ms format and starts the
      * process to save it to the database.
-     * @param req  Request
+     *
+     * @param req      Request
      * @param response Response
-     * @param session Session
+     * @param session  Session
      * @return Response
      */
-    public static Response getWinningTime( Request req ,Response response, Session session){
-        if(req.session().attributes().contains("time")){
+    public static Response getWinningTime(Request req, Response response, Session session) {
+        if (req.session().attributes().contains("time")) {
             Date oldTime = req.session().attribute("time");
             long milSec = new Date().getTime() - oldTime.getTime();
             Date date = new Date(milSec);
             SimpleDateFormat dateFormat = new SimpleDateFormat("mm-ss-SS");
-            String format =  dateFormat.format(date);
+            String format = dateFormat.format(date);
             req.session().removeAttribute("time");
-            DbHandler dbHandler =   DbHandler.getDbHandlerInstance();
-            dbHandler.saveScoretoBoard(req,session,format);
+            DbHandler dbHandler = DbHandler.getDbHandlerInstance();
+            dbHandler.saveScoretoBoard(req, session, format);
         }
         return response;
     }

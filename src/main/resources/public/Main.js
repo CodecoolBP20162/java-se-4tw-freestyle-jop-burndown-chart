@@ -17,12 +17,12 @@ $(document).ready(function () {
 
     $('#logout-button').click(function () {
         $.ajax({
-                url: "/logout",
-                type: "GET",
-                async: true,
-                success:function () {
-                    location.href ="/";
-                }
+            url: "/logout",
+            type: "GET",
+            async: true,
+            success: function () {
+                location.href = "/";
+            }
 
         })
 
@@ -46,14 +46,14 @@ $(document).ready(function () {
         });
     });
 
-    $('.table-buttons').bind("contextmenu",function(e) {
-        if(!($(this).hasClass("revealed"))){
-        if ($(this).hasClass("glyphicon")) {
-            $(this).removeClass("glyphicon");
-            $(this).removeClass("glyphicon-eye-open")
-        } else {
-        $(this).addClass("glyphicon glyphicon-eye-open");
-    }
+    $('.table-buttons').bind("contextmenu", function (e) {
+        if (!($(this).hasClass("revealed"))) {
+            if ($(this).hasClass("glyphicon")) {
+                $(this).removeClass("glyphicon");
+                $(this).removeClass("glyphicon-eye-open")
+            } else {
+                $(this).addClass("glyphicon glyphicon-eye-open");
+            }
         }
         return false;
     });
@@ -70,20 +70,20 @@ $(document).ready(function () {
             success: function (resp) {
                 for (var i = 0; i < resp["currentChars"].length; i++) {
                     var selector = '#' + resp["coords"][i][0] + "_" + resp["coords"][i][1];
-                    if(resp["currentChars"][i] == '9') {
+                    if (resp["currentChars"][i] == '9') {
                         $(".table-buttons").prop('disabled', true);
                         $(selector).parent().html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
                         $("#game-over-and-new-game").removeAttr("style");
                         $("#game-over-10-and-new-game").removeAttr("style");
                         $("#game-over-15-and-new-game").removeAttr("style");
-                    }else {
+                    } else {
                         $(selector).html(resp["currentChars"][i]);
                         $(selector).addClass("revealed button-value" + resp["currentChars"][i])
                         $(selector).parent().removeClass("unchecked");
                         $(selector).removeClass("glyphicon-eye-open");
                         $(selector).removeClass("glyphicon");
                     }
-                   evaluator();
+                    evaluator();
                 }
             }
         });
@@ -95,20 +95,20 @@ $(document).ready(function () {
             type: "GET",
             async: true,
             success: function (resp) {
-                if($(".button-container").length - $(".revealed").length == resp["numberOfMines"]){
+                if ($(".button-container").length - $(".revealed").length == resp["numberOfMines"]) {
                     $(".table-buttons").prop('disabled', true);
                     $(".unchecked").html("<p class='mine-cell glyphicon glyphicon-certificate'></p>");
                     $("#congratulation-and-new-game").removeAttr("style");
                     $("#congratulation-10-and-new-game").removeAttr("style");
                     $("#congratulation-15-and-new-game").removeAttr("style");
-                    
+
                     $.ajax({
                         url: "/winning_time",
                         type: "POST",
                         async: true,
-                        data: {"status":"ok"},
-                        success:function () {
-                            
+                        data: {"status": "ok"},
+                        success: function () {
+
                         }
                     });
                 }

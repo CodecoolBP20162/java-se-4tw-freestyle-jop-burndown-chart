@@ -1,10 +1,13 @@
 package com.codecool.jopburndown.model;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BoardTest {
 
@@ -43,9 +46,9 @@ class BoardTest {
     }
 
     @Test
-    void testGetListToReveal_GivesBackValidCoordinates(){
+    void testGetListToReveal_GivesBackValidCoordinates() {
         Board board = new Board(3);
-        char[][] charArr = {{'0','1','9'},{'0','1','1'},{'0','0','0'}};
+        char[][] charArr = {{'0', '1', '9'}, {'0', '1', '1'}, {'0', '0', '0'}};
         board.setActualBoard(charArr);
         board.setCopyBoard(charArr);
 
@@ -59,14 +62,14 @@ class BoardTest {
         coordsOfCharsToDisplay.add(Arrays.asList(1, 2));
         coordsOfCharsToDisplay.add(Arrays.asList(2, 2));
 
-        assertEquals(coordsOfCharsToDisplay, board.getListToReveal(0,0));
+        assertEquals(coordsOfCharsToDisplay, board.getListToReveal(0, 0));
     }
 
     @Test
-    void testGetAllCharsToDisplay_GivesBackValidValues(){
+    void testGetAllCharsToDisplay_GivesBackValidValues() {
 
         Board board = new Board(3);
-        char[][] charArr = {{'0','1','9'},{'0','1','1'},{'0','0','0'}};
+        char[][] charArr = {{'0', '1', '9'}, {'0', '1', '1'}, {'0', '0', '0'}};
         board.setActualBoard(charArr);
 
         List<List<Integer>> coordsOfCharsToDisplay = new ArrayList<List<Integer>>();
