@@ -22,7 +22,9 @@ public class Board {
     private char[][] copyBoard;
 
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
+
     public int mineCounter = 0;
+
     /**
      * The constructor creates an actual board. This is done by the createBoard method.
      * @see Board#createBoard(int)
@@ -40,7 +42,6 @@ public class Board {
         logger.info("Actual number of mines: {}", mineCounter);
 
     }
-
     /**
      * The createBoard method creates a 2D char array. Both the inner arrays and the outer
      * array will be "size" length. The method will place two kind of characters into the
@@ -71,7 +72,6 @@ public class Board {
 
         return board;
     }
-
     /**
      * The replacer method iterates through the 2D char array of our board and
      * will replace the fields next to a bomb or mine to the number of how many bombs
@@ -113,6 +113,14 @@ public class Board {
      */
     public char[][] getActualBoard() {
         return actualBoard;
+    }
+
+    public void setActualBoard(char[][] actualBoard) {
+        this.actualBoard = actualBoard;
+    }
+
+    public void setCopyBoard(char[][] copyBoard) {
+        this.copyBoard = copyBoard;
     }
 
     /**
