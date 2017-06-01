@@ -21,6 +21,7 @@ public class MainController {
         HashMap<String, String> map = new HashMap<>();
         return new ModelAndView(map,"form");
     }
+
     /**
      * This method renders the main page. It will return a Spark ModelAndView object.
      * @param req

@@ -7,6 +7,10 @@ import com.codecool.jopburndown.controller.BoardController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.*;
+import com.codecool.jopburndown.controller.BoardController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.*;
 
 /**
  * An instance of a Board represents one playing board of a minesweeper game.
@@ -22,12 +26,12 @@ public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name="board_size")
+    @Column(name = "board_size")
     private int boardSize;
-    @Column(name="score" )
+    @Column(name = "score")
     private int score;
     @OneToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User username;
 
     private char[][] actualBoard;
@@ -44,12 +48,13 @@ public class Board {
 
     /**
      * The constructor creates an actual board. This is done by the createBoard method.
+     *
+     * @param size
      * @see Board#createBoard(int)
      * Then it calls the replacer method. To see how this works
      * @see Board#replacer()
      * It also creates a copy of that field, which will be used in the search engine.
      * @see Board#searchEngine(int, int)
-     * @param size
      */
     public Board(int size) {
         actualBoard = createBoard(size);
@@ -66,6 +71,7 @@ public class Board {
      * board - zeros and nines. Nine will represent a bomb or mine, and zero represents
      * a safe field. After the board is filled with numbers, the method will give bach
      * the 2D array.
+     *
      * @param size This parameter will be used to create the size of the arrays.
      * @return 2D char array, which represents the board with all the bombs and safe areas.
      */
@@ -116,18 +122,20 @@ public class Board {
 
     /**
      * This method is a self-made deepcopy method which will copy the actualBoard 2D array.
+     *
      * @return the new 2D array, which is an exact copy of the original actualBoard.
      */
-    private char[][] deepCopyBoard(){
+    private char[][] deepCopyBoard() {
         char[][] current = new char[this.actualBoard.length][this.actualBoard.length];
-        for(int i=0; i<this.actualBoard.length; i++)
-            for(int j=0; j<this.actualBoard[i].length; j++)
+        for (int i = 0; i < this.actualBoard.length; i++)
+            for (int j = 0; j < this.actualBoard[i].length; j++)
                 current[i][j] = this.actualBoard[i][j];
         return current;
     }
 
     /**
      * Getter for the actualBoard
+     *
      * @return the actualBoard
      */
     public char[][] getActualBoard() {
@@ -136,22 +144,24 @@ public class Board {
 
     /**
      * Returns a given fields content by its coordinates.
+     *
      * @param x the x coordinate of the field
      * @param y the y coordinate of the field
      * @return the value of the given field
      */
-    public char getActualElement(int x, int y){
+    public char getActualElement(int x, int y) {
         return this.actualBoard[x][y];
     }
 
     /**
      * This is the function which will be called from outside the Board class in order
      * to return all coordinates where there is a zero or a field next to a zero.
+     *
      * @param x the x coordinate of the center of the examination
      * @param y the y coordinate of the center of the examination
      * @return all the coordinates where there is a zero or a number next to a zero.
      */
-    public List<List<Integer>> getListToReveal(int x, int y){
+    public List<List<Integer>> getListToReveal(int x, int y) {
         this.coords.clear();
         searchEngine(x, y);
         return this.coords;
@@ -167,11 +177,12 @@ public class Board {
      * Afther this, it again calls this method and do the search and update the coords again.
      * If it finds a number, it marks this number as an X and it will return true and so the recursion
      * stops on that level, and it goes back to the level before.
+     *
      * @param x x coordinate of the center of the examination
      * @param y y coordinate of the center of the examination
      * @return true in order to exit the current level of the recursion.
      */
-    private boolean searchEngine(int x, int y){
+    private boolean searchEngine(int x, int y) {
         this.coords.add(Arrays.asList(x, y));
 
         if (this.copyBoard[x][y] == '0') {
@@ -191,12 +202,13 @@ public class Board {
     /**
      * This method will get ceratin coordinates, it checks what numbers are present at these locations
      * and will return a list of these elements.
+     *
      * @param coords A list of coordinates
      * @return A list of characters, which are present at the given coordinates.
      */
-    public List<Character> getAllCharsToDisplay(List<List<Integer>> coords){
+    public List<Character> getAllCharsToDisplay(List<List<Integer>> coords) {
         List<Character> chars = new ArrayList<>();
-        for (List<Integer> coord: coords){
+        for (List<Integer> coord : coords) {
             chars.add(this.actualBoard[coord.get(0)][coord.get(1)]);
         }
         return chars;
@@ -205,6 +217,7 @@ public class Board {
     /**
      * The overriden toString method will print out the currentBoard of the instance in a human
      * readable nice form.
+     *
      * @return returns the string to be printed.
      */
     @Override
@@ -219,3 +232,4 @@ public class Board {
         return result.toString();
     }
 }
+
