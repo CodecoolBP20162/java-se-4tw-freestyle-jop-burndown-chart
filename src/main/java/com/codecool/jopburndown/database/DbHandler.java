@@ -2,16 +2,15 @@ package com.codecool.jopburndown.database;
 
 import com.codecool.jopburndown.model.Board;
 import com.codecool.jopburndown.model.User;
+import spark.Request;
+import org.mindrot.jbcrypt.BCrypt;
+import java.util.ArrayList;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.mindrot.jbcrypt.BCrypt;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import spark.Request;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DbHandler {
 
@@ -55,8 +54,7 @@ public class DbHandler {
     /**
      * It configures hibernate.cfg.xml with unique DB_user and DB_password and builds tables in DB
      */
-    public void buildTablesWithUniqueConnection() {
-
+    public void buildTablesWithUniqueConnection(){
         Configuration config = new Configuration();
         config.configure("hibernate.cfg.xml");
         config.getProperties().setProperty("hibernate.connection.password", DB_PASSWORD);
@@ -72,7 +70,6 @@ public class DbHandler {
      * @param session
      */
     public void saveUserToDB(Request req, Session session) {
-
         session.beginTransaction();
         User user = new User(req.queryParams("username"), BCrypt.hashpw(req.queryParams("password"), BCrypt.gensalt(10)));
         session.save(user);
@@ -87,7 +84,6 @@ public class DbHandler {
      * @param session
      */
     public void getUserFromDB(Request req, Session session) {
-
         session.beginTransaction();
         List<User> users = session.createQuery("FROM User").list();
         String username = req.queryParams("username");
@@ -108,9 +104,9 @@ public class DbHandler {
      * @param session Session
      * @param score   String
      */
-    public void saveScoretoBoard(Request req, Session session, String score) {
+    public void saveScoreToBoard(Request req, Session session, String score){
         session.beginTransaction();
-        Board board = new Board(score, req.session().attribute("user"));
+        Board board = new Board(req.session().attribute("size"), score, req.session().attribute("user"));
         session.save(board);
         session.getTransaction().commit();
         logger.info("Successfully saved the current score.");

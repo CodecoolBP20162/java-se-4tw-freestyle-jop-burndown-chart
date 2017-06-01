@@ -15,8 +15,14 @@
     border: none;
 }
 
+<<<<<<< HEAD
 .button-value1 {
     background-color: PapayaWhip;
+=======
+
+.button-value1{
+    background-color: PapayaWhip ;
+>>>>>>> f2b12c035d0a6d9f83eaf719516bce03dac8de74
     color: palevioletred;
 }
 

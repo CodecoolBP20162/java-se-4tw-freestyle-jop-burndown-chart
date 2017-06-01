@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var span = document.getElementsByClassName("close")[0];
 
     $('#get-motivation').click(function () {
         $.ajax({
@@ -23,10 +24,9 @@ $(document).ready(function () {
             success: function () {
                 location.href = "/";
             }
-
         })
-
     });
+
 
     $('#set-motivation').click(function () {
         alert("setben vok");
@@ -106,9 +106,11 @@ $(document).ready(function () {
                         url: "/winning_time",
                         type: "POST",
                         async: true,
-                        data: {"status": "ok"},
-                        success: function () {
-
+                        data: {"status":"ok"},
+                        success:function (data) {
+                            var time = data["time"];
+                            console.log(time);
+                            $('#score').text(time);
                         }
                     });
                 }

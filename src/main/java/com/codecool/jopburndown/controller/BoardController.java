@@ -30,10 +30,10 @@ public class BoardController {
      */
     public static Response createNewBoard(Request req, Response res) {
         int size = Integer.parseInt(req.queryParams("size"));
+        req.session().attribute("size",size);
         board = new Board(size);
         res.redirect("/board");
         logger.info("Table creation executed.\nactual board:\n{}", board);
-
         return res;
     }
 

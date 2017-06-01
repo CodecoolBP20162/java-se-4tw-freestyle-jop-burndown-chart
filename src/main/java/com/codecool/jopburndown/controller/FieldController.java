@@ -28,8 +28,4 @@ public class FieldController {
         params.put("board", actualBoard);
         return new ModelAndView(params, "board");
     }
-
-//    public static ModelAndView saveScoreToDB(Request req, Response res) {
-//
-//    }
 }

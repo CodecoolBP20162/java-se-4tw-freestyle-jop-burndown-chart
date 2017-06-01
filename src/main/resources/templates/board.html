@@ -4,22 +4,22 @@
 <div th:include="index::imports"></div>
 <body>
 <div class="container table-container">
-    <div th:if="${board.length == 5}" class="row">
-        <table class="table table-bordered">
-            <tr class="table-row" th:each="row, iterStat:${board}">
-                <td class="unchecked button-container" th:each="num, iterStat2:${row}">
-                    <button class="table-buttons" th:id="${iterStat.index} + '_' + ${iterStat2.index}"
-                            th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
-                </td>
-            </tr>
-        </table>
-        <div id="game-over-and-new-game" style="display: none;">
-            <p class="game-over">
-            <h1 class='game-over-message'>GAME OVER</h1>
-            <form action='/'>
-                <button type='submit' class='btn btn-primary active'>NEW GAME</button>
-            </form>
-            </p>
+        <div th:if="${board.length == 5}" class="row">
+            <table class="table table-bordered">
+                <tr class="table-row" th:each="row, iterStat:${board}">
+                    <td class="unchecked button-container" th:each="num, iterStat2:${row}">
+                        <button class="table-buttons" th:id="${iterStat.index} + '_' + ${iterStat2.index}" th:value="${iterStat.index}" th:name="${iterStat2.index}"></button>
+                    </td>
+                </tr>
+            </table>
+            <div id="game-over-and-new-game" style="display: none;">
+                <p class="game-over"><h1 class='game-over-message'>GAME OVER</h1><form action='/'><button type='submit'  class='btn btn-primary active'>NEW GAME</button></form> </p>
+            </div>
+            <div id="congratulation-and-new-game" style="display: none;">
+                <h2 class='congratulation-message'>Congratulation!</h2><p class='congratulation-message'>You survived the minefield!</p><form action='/'>
+                <div class='congratulation-message'>Your score in <br/> min-sec-ms:</div><p id="score" class='congratulation-message'></p>
+                <button type='submit' class='btn btn-primary active'>NEW GAME</button></form>
+            </div>
         </div>
         <div id="congratulation-and-new-game" style="display: none;">
             <h2 class='congratulation-message'>Congratulation!</h2>

@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.hibernate.Session;
 
 /**
  * An instance of a Board represents one playing board of a minesweeper game.
@@ -18,6 +21,7 @@ import java.util.Random;
 @Entity
 @Table(name = "board")
 public class Board {
+
     private static final Logger logger = LoggerFactory.getLogger(Board.class);
     @Transient
     public int mineCounter = 0;
@@ -38,8 +42,8 @@ public class Board {
     @Transient
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
 
-    public Board(String score, User username) {
-        this.boardSize = getActualBoard().length;
+    public Board(int size,String score, User username) {
+        this.boardSize = size;
         this.score = score;
         this.username = username;
     }
@@ -245,6 +249,19 @@ public class Board {
             result.append(System.getProperty("line.separator"));
         }
         return result.toString();
+    }
+
+    public String getScore(){
+        return this.score;
+    }
+
+    public String getUsername(){
+        return this.username.getUsername();
+    }
+
+    public static List<Board> getAllScore(Session session){
+        List<Board> boards = session.createQuery("FROM Board").list();
+        return boards;
     }
 }
 

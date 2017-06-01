@@ -18,7 +18,6 @@ import java.util.Date;
 
 import static spark.Spark.*;
 
-
 public class Main {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -29,6 +28,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
         SessionFactory sessionFactory = dbHandler.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -42,9 +42,8 @@ public class Main {
 
         get("/register", UserController::renderRegister, new ThymeleafTemplateEngine());
 
-        get("/", MainController::renderIndex, new ThymeleafTemplateEngine());
-
-        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
+        get("/", (Request req, Response res) -> {
+            return new ThymeleafTemplateEngine().render(MainController.renderIndex(req, res, session));});
 
         post("/get_size", BoardController::createNewBoard);
 
@@ -68,11 +67,10 @@ public class Main {
             return new ThymeleafTemplateEngine().render(UserController.logout(req));
         });
 
-        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
+        get("/", (Request req, Response res) -> {
+            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(session));});
 
         post("/get_size", BoardController::createNewBoard);
-
-        get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 
         post("/retrieve_data", BoardController::infoAboutSquare);
 

@@ -31,9 +31,9 @@ public class UserController {
         return new ModelAndView(map, "login");
     }
 
-    public static ModelAndView logout(Request request) {
-        request.session().removeAttribute("user");
-        return new ModelAndView(map, "login");
+    public static ModelAndView logout(Request req){
+        req.session().removeAttribute("user");
+        return new ModelAndView(map,"login");
     }
 
     /**

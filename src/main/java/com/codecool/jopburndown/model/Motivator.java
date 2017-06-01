@@ -59,6 +59,4 @@ public class Motivator {
         this.motivationMessages.addFirst(motivationMessages);
         this.motivationMessages.removeLast();
     }
-
-
 }
