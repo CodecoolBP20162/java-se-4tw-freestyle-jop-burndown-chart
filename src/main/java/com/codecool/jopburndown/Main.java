@@ -1,7 +1,7 @@
 package com.codecool.jopburndown;
 
 
-import com.codecool.jopburndown.controller.FieldController;
+import com.codecool.jopburndown.controller.BoardController;
 import com.codecool.jopburndown.controller.MainController;
 import com.codecool.jopburndown.controller.UserController;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
@@ -9,6 +9,7 @@ import static spark.Spark.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class Main {
 
@@ -23,15 +24,20 @@ public class Main {
         staticFileLocation("/public");
         port(8888);
 
+
         get("/login", UserController::renderLogin, new ThymeleafTemplateEngine());
 
         get("/register", UserController::renderRegister, new ThymeleafTemplateEngine());
 
-        get("/", MainController::renderIndex, new ThymeleafTemplateEngine());
+        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
-        post("/get_size", FieldController::createNewBoard);
 
-        get("/board", FieldController::showBoard, new ThymeleafTemplateEngine());
+        post("/get_size", BoardController::createNewBoard);
 
+        get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
+
+        post("/retrieve_data", BoardController::infoAboutSquare);
+
+        get("/evaluate", BoardController::countMines);
     }
 }

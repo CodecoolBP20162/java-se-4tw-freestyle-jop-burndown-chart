@@ -1,0 +1,137 @@
+.table-buttons{
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    padding: 1px !important;
+    color: white;
+    background-color: teal;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.button-value0{
+    background-color: transparent;
+    color: darkcyan;
+    border: none;
+}
+
+.button-value1{
+    background-color: PapayaWhip ;
+    color: palevioletred;
+}
+
+.button-value2{
+    background-color: PapayaWhip ;
+    color: #ff8b17;
+}
+
+.button-value3{
+    background-color: PapayaWhip ;
+    color: red;
+}
+
+.button-value4{
+    background-color: PapayaWhip ;
+    color: #da00e2;
+}
+
+.button-value5{
+    background-color: PapayaWhip ;
+    color: #08e211;
+}
+
+.button-value6{
+    background-color: PapayaWhip ;
+    color: #ff8986;
+}
+
+.button-value7{
+    background-color: PapayaWhip ;
+    color: #030dff;
+}
+
+.button-value8{
+    background-color: PapayaWhip ;
+    color: #ff03ec;
+}
+
+.mine-cell{
+    color: dimgray;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.button-container p{
+    padding-top: 10px;
+}
+
+.button-container{
+    padding: 0 !important;
+    text-align: center !important;
+    width: 40px !important;
+    height: 40px!important;
+    border: none !important;
+}
+
+.table-row{
+    width: 100%;
+}
+
+.table-bordered{
+    width: 19%;
+}
+.table-bordered-10{
+    width: 38%;
+}
+
+.table-bordered-15{
+    width: 57%;
+}
+
+.table-container{
+    border: none !important;
+    padding: auto !important;
+}
+
+table {
+    border-spacing: 0 !important;
+}
+
+#difficulty-form{
+    text-align: center;
+}
+
+.congratulation-message{
+    font-family: "Droid Sans";
+    font-weight: bold;
+    color: brown;
+    text-align: center;
+
+}
+
+.game-over-message{
+    font-family: "Droid Sans";
+    font-weight: bold;
+    color: cadetblue;
+    text-align: center;
+
+}
+
+#game-over-and-new-game, #congratulation-and-new-game{
+    width: 19%;
+    text-align: center;
+}
+#game-over-10-and-new-game, #congratulation-10-and-new-game{
+    width: 38%;
+    text-align: center;
+
+}
+#game-over-15-and-new-game, #congratulation-15-and-new-game {
+    width: 57%;
+    text-align: center;
+}
+
+#choice-message{
+    font-weight: bold;
+}
