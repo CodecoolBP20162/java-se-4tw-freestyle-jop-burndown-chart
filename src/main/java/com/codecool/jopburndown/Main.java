@@ -37,8 +37,6 @@ public class Main {
 
         get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
-        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
-
         post("/get_size", BoardController::createNewBoard);
 
         get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());

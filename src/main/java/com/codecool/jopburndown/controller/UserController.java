@@ -56,7 +56,7 @@ public class UserController {
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
         dbHandler.saveUserToDB(req, session);
         logger.info("Successfully submitted");
-        return new ModelAndView(map, "login");
+        return new ModelAndView(map, "index");
     }
 
     /**
