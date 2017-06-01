@@ -1,16 +1,14 @@
 package com.codecool.jopburndown.controller;
 
 import com.codecool.jopburndown.database.DbHandler;
-import org.hibernate.query.Query;
-import org.mindrot.jbcrypt.BCrypt;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.HashMap;
+import java.util.Map;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Session;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Handles the user login and register
@@ -31,8 +29,8 @@ public class UserController {
         return new ModelAndView(map,"login");
     }
 
-    public static ModelAndView logout(Request request){
-        request.session().removeAttribute("user");
+    public static ModelAndView logout(Request req){
+        req.session().removeAttribute("user");
         return new ModelAndView(map,"login");
     }
 

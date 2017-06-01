@@ -3,20 +3,18 @@ package com.codecool.jopburndown;
 import com.codecool.jopburndown.controller.MainController;
 import com.codecool.jopburndown.controller.UserController;
 import com.codecool.jopburndown.controller.BoardController;
+import com.codecool.jopburndown.controller.MotivatorController;
 import com.codecool.jopburndown.database.DbHandler;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.codecool.jopburndown.controller.MotivatorController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import static spark.Spark.*;
+import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import spark.Request;
 import spark.Response;
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main {
 
@@ -28,6 +26,7 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
+
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
         SessionFactory sessionFactory = dbHandler.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -43,8 +42,6 @@ public class Main {
 
         get("/", (Request req, Response res) -> {
             return new ThymeleafTemplateEngine().render(MainController.renderIndex(req, res, session));});
-
-       // get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
         post("/get_size", BoardController::createNewBoard);
 
@@ -64,11 +61,9 @@ public class Main {
             return new ThymeleafTemplateEngine().render(UserController.logout(req));});
 
         get("/", (Request req, Response res) -> {
-            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(req, res, session));});
+            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(session));});
 
         post("/get_size", BoardController::createNewBoard);
-
-//        get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 
         post("/retrieve_data", BoardController::infoAboutSquare);
 

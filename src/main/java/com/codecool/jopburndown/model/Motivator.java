@@ -5,9 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by petya on 2017.06.01..
- */
 public class Motivator {
 
     private Deque<String> motivationMessages = new LinkedList<>();
@@ -25,7 +22,6 @@ public class Motivator {
         motivationMessages.add("Kódolni jó, mert közben marhaságokat lehet írni Deque-kba!");
     }
 
-
     public String getMotivationMessage() {
         Random randomNum = new Random();
         int actualRandomNum = randomNum.nextInt(6);
@@ -37,6 +33,4 @@ public class Motivator {
         this.motivationMessages.addFirst(motivationMessages);
         this.motivationMessages.removeLast();
     }
-
-
 }
