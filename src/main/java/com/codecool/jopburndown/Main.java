@@ -43,7 +43,8 @@ public class Main {
         get("/register", UserController::renderRegister, new ThymeleafTemplateEngine());
 
         get("/", (Request req, Response res) -> {
-            return new ThymeleafTemplateEngine().render(MainController.renderIndex(req, res, session));});
+            return new ThymeleafTemplateEngine().render(MainController.renderIndex(req, res, session));
+        });
 
         post("/get_size", BoardController::createNewBoard);
 
@@ -68,7 +69,8 @@ public class Main {
         });
 
         get("/", (Request req, Response res) -> {
-            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(session));});
+            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(session));
+        });
 
         post("/get_size", BoardController::createNewBoard);
 

@@ -42,7 +42,7 @@ public class Board {
     @Transient
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
 
-    public Board(int size,String score, User username) {
+    public Board(int size, String score, User username) {
         this.boardSize = size;
         this.score = score;
         this.username = username;
@@ -95,7 +95,6 @@ public class Board {
         }
         logger.info("New board created. - actual size: {}", size);
         logger.debug("Actual size: {}", size);
-
         return board;
     }
 
@@ -251,15 +250,21 @@ public class Board {
         return result.toString();
     }
 
-    public String getScore(){
+    public String getScore() {
         return this.score;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return this.username.getUsername();
     }
 
-    public static List<Board> getAllScore(Session session){
+    /**
+     * Gets all Board object from the table
+     *
+     * @param session Session
+     * @return List<Board>
+     */
+    public static List<Board> getAllScore(Session session) {
         List<Board> boards = session.createQuery("FROM Board").list();
         return boards;
     }

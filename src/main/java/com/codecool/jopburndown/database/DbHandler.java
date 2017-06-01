@@ -28,8 +28,6 @@ public class DbHandler {
         buildTablesWithUniqueConnection();
     }
 
-    ;
-
     /**
      * It creates DbHandler Singleton Class
      *
@@ -54,7 +52,7 @@ public class DbHandler {
     /**
      * It configures hibernate.cfg.xml with unique DB_user and DB_password and builds tables in DB
      */
-    public void buildTablesWithUniqueConnection(){
+    public void buildTablesWithUniqueConnection() {
         Configuration config = new Configuration();
         config.configure("hibernate.cfg.xml");
         config.getProperties().setProperty("hibernate.connection.password", DB_PASSWORD);
@@ -104,7 +102,7 @@ public class DbHandler {
      * @param session Session
      * @param score   String
      */
-    public void saveScoreToBoard(Request req, Session session, String score){
+    public void saveScoreToBoard(Request req, Session session, String score) {
         session.beginTransaction();
         Board board = new Board(req.session().attribute("size"), score, req.session().attribute("user"));
         session.save(board);
