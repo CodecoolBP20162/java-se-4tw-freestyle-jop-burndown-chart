@@ -18,10 +18,11 @@ public class Board {
     private static final Logger logger = LoggerFactory.getLogger(Board.class);
 
     private char[][] actualBoard;
+
     private char[][] copyBoard;
+
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
     public int mineCounter = 0;
-
     /**
      * The constructor creates an actual board. This is done by the createBoard method.
      * @see Board#createBoard(int)
@@ -49,7 +50,7 @@ public class Board {
      * @param size This parameter will be used to create the size of the arrays.
      * @return 2D char array, which represents the board with all the bombs and safe areas.
      */
-    private char[][] createBoard(int size) {
+    char[][] createBoard(int size) {
         char[][] board = new char[size][size];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -76,7 +77,7 @@ public class Board {
      * will replace the fields next to a bomb or mine to the number of how many bombs
      * are next to this certain field.
      */
-    private void replacer() {
+    void replacer() {
         for (int i = 0; i < this.actualBoard.length; i++) {
             for (int j = 0; j < this.actualBoard[i].length; j++) {
                 if (this.actualBoard[i][j] == '9') {
@@ -112,6 +113,14 @@ public class Board {
      */
     public char[][] getActualBoard() {
         return actualBoard;
+    }
+
+    /**
+     * Getter for the copyBoard
+     * @return the copyBoard
+     */
+    char[][] getCopyBoard() {
+        return copyBoard;
     }
 
     /**
