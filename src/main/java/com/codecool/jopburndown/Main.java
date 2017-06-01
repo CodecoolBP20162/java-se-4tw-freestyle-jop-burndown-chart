@@ -1,24 +1,34 @@
 package com.codecool.jopburndown;
 
 
+
 import com.codecool.jopburndown.controller.BoardController;
+import com.codecool.jopburndown.controller.FieldController;
 import com.codecool.jopburndown.controller.MainController;
 import com.codecool.jopburndown.controller.UserController;
-import spark.template.thymeleaf.ThymeleafTemplateEngine;
-import static spark.Spark.*;
-
+import com.codecool.jopburndown.database.DbHandler;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import spark.template.thymeleaf.ThymeleafTemplateEngine;
+import static spark.Spark.*;
+import spark.Request;
+import spark.Response;
 
 
 public class Main {
 
-    static{
+    static {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         System.setProperty("date",dateFormat.format(new Date()));
     }
 
     public static void main(String[] args) {
+
+        DbHandler dbHandler = DbHandler.getDbHandlerInstance();
+        SessionFactory sessionFactory = dbHandler.getSessionFactory();
+        Session session = sessionFactory.openSession();
 
         exception(Exception.class, (e, req, res) -> e.printStackTrace());
         staticFileLocation("/public");
@@ -39,5 +49,10 @@ public class Main {
         post("/retrieve_data", BoardController::infoAboutSquare);
 
         get("/evaluate", BoardController::countMines);
+
+        post("/register", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitRegister(req, session));});
+
+        post("/login", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitUser(req, session));});
+
     }
 }

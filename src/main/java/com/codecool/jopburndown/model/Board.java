@@ -1,16 +1,41 @@
 package com.codecool.jopburndown.model;
 
 
+
 import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.util.*;
 
+import javax.persistence.*;
+import java.util.List;
+import java.util.Random;
+
+
+@Entity
+@Table(name = "board")
 public class Board {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(name="board_size")
+    private int boardSize;
+    @Column(name="score" )
+    private int score;
+    @OneToOne
+    @JoinColumn(name="user_id")
+    private User username;
 
     private char[][] actualBoard;
     private char[][] copyBoard;
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
     public int mineCounter = 0;
+
+    public Board(int boardSize, int score, User username) {
+        this.boardSize = boardSize;
+        this.score = score;
+        this.username = username;
+    }
 
     public Board(int size) {
         this.actualBoard = createBoard(size);

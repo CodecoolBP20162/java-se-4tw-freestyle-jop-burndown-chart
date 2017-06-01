@@ -1,7 +1,5 @@
 package com.codecool.jopburndown.controller;
 
-
-import com.codecool.jopburndown.model.Board;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -16,6 +14,13 @@ public class MainController {
         }
         HashMap<String, String> map = new HashMap<>();
         return new ModelAndView(map,"form");
+    }
+
+
+    public static ModelAndView renderIndexWithUser(Request req, Response res) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("username", req.session().attribute("username"));
+        return new ModelAndView(map, "index");
     }
 
 }
