@@ -1,5 +1,51 @@
 $(document).ready(function () {
 
+    $('#get-motivation').click(function () {
+        $.ajax({
+            url: "/motivation",
+            type: "GET",
+            async: true,
+            success: function (resp) {
+                $('#motivation-message').html(resp['message']);
+            },
+            error: function () {
+                alert("something went wrong")
+            }
+        });
+    });
+
+
+    $('#logoutBut').click(function () {
+        $.ajax({
+                url: "/logout",
+                type: "GET",
+                async: true,
+                success:function () {
+                    location.href ="/";
+                }
+
+        })
+
+    });
+
+    $('#set-motivation').click(function () {
+        alert("setben vok");
+        var newMessage = $('#motivation-message-board').val();
+        alert(newMessage);
+        $.ajax({
+            url: "/set_motivation",
+            type: "POST",
+            async: true,
+            data: {message: newMessage},
+            success: function (resp) {
+                $('#motivation-message-board').val(resp['message']);
+            },
+            error: function () {
+                alert("something went wrong")
+            }
+        });
+    });
+
     $('.table-buttons').bind("contextmenu",function(e) {
         if(!($(this).hasClass("revealed"))){
         if ($(this).hasClass("glyphicon")) {
@@ -55,6 +101,16 @@ $(document).ready(function () {
                     $("#congratulation-and-new-game").removeAttr("style");
                     $("#congratulation-10-and-new-game").removeAttr("style");
                     $("#congratulation-15-and-new-game").removeAttr("style");
+                    
+                    $.ajax({
+                        url: "/winning_time",
+                        type: "POST",
+                        async: true,
+                        data: {"status":"ok"},
+                        success:function () {
+                            
+                        }
+                    });
                 }
             },
             error: function () {
