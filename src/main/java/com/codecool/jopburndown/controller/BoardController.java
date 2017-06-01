@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +17,7 @@ import java.util.*;
  * within a game. Every communication between user and the actual board instance is done here.
  */
 public class BoardController {
+
     private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
     private static Board board;
 
@@ -43,12 +43,13 @@ public class BoardController {
      * of the instantiated board.
      * @param req
      * @param res
-     * @return
+     * @return ModelAndView
      */
     public static ModelAndView showBoard(Request req, Response res){
         char[][] actualBoard = board.getActualBoard();
         Map<String, Object> params = new HashMap<>();
         params.put("board", actualBoard);
+        req.session().attribute("time",new Date());
         return new ModelAndView(params, "board");
     }
 
@@ -59,7 +60,7 @@ public class BoardController {
      * should be revealed to the user.
      * @param req
      * @param res
-     * @return
+     * @return JSONObject
      */
     public static JSONObject infoAboutSquare(Request req, Response res){
         JSONObject jsonObj = new JSONObject();
@@ -86,10 +87,10 @@ public class BoardController {
 
     /**
      * This method will return a jsonObj containing the number of all mines present in the
-     * board. 
+     * board.
      * @param req
      * @param res
-     * @return
+     * @return JSONObject
      */
     public static JSONObject countMines(Request req, Response res){
         JSONObject jsonObj = new JSONObject();

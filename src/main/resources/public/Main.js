@@ -14,6 +14,20 @@ $(document).ready(function () {
         });
     });
 
+
+    $('#logoutBut').click(function () {
+        $.ajax({
+                url: "/logout",
+                type: "GET",
+                async: true,
+                success:function () {
+                    location.href ="/";
+                }
+
+        })
+
+    });
+
     $('#set-motivation').click(function () {
         alert("setben vok");
         var newMessage = $('#motivation-message-board').val();
@@ -87,6 +101,16 @@ $(document).ready(function () {
                     $("#congratulation-and-new-game").removeAttr("style");
                     $("#congratulation-10-and-new-game").removeAttr("style");
                     $("#congratulation-15-and-new-game").removeAttr("style");
+                    
+                    $.ajax({
+                        url: "/winning_time",
+                        type: "POST",
+                        async: true,
+                        data: {"status":"ok"},
+                        success:function () {
+                            
+                        }
+                    });
                 }
             },
             error: function () {

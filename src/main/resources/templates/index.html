@@ -24,6 +24,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+
+    <!--<script th:src="@{~/com.codecool.jopburndown.Main.js}"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="/css/custom.css"/>-->
+
     <script th:src="@{~/Main.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{~/css/style.css}"/>
 
@@ -35,7 +39,7 @@
                 <a id="title-button" class="navbar-brand" href="/">MineSweeper</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li id="logout-button" class="active"><a href="#">Logout</a></li>
+                <li class="active logout-button" id="logout-button"><a href="#">Logout</a></li>
             </ul>
         </div>
     </nav>
