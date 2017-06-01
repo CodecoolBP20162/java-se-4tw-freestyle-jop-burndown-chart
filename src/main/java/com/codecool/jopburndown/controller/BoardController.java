@@ -7,9 +7,6 @@ import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import spark.Session;
-
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +35,6 @@ public class BoardController {
         board = new Board(size);
         res.redirect("/board");
         logger.info("Table creation executed.\nactual board:\n{}", board);
-
         return res;
     }
 
@@ -54,7 +50,6 @@ public class BoardController {
         Map<String, Object> params = new HashMap<>();
         params.put("board", actualBoard);
         req.session().attribute("time",new Date());
-//        params.put("boards",Board.getAllScore(session));
         return new ModelAndView(params, "board");
     }
 
@@ -97,7 +92,7 @@ public class BoardController {
      * @param res
      * @return JSONObject
      */
-    public static JSONObject countMines(Request req, Response res){
+    public static JSONObject countMines(Request req, Response res) {
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("numberOfMines", board.mineCounter);
         res.type("application/json");

@@ -2,16 +2,9 @@ package com.codecool.jopburndown.controller;
 
 import com.codecool.jopburndown.model.Motivator;
 import org.json.simple.JSONObject;
-import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * Created by petya on 2017.06.01..
- */
 public class MotivatorController {
 
     private static Motivator motivator = new Motivator();

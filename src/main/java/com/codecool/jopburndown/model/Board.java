@@ -1,13 +1,13 @@
 package com.codecool.jopburndown.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.*;
+import org.hibernate.Session;
 
 /**
  * An instance of a Board represents one playing board of a minesweeper game.
@@ -18,6 +18,7 @@ import java.util.*;
 @Entity
 @Table(name = "board")
 public class Board {
+
     private static final Logger logger = LoggerFactory.getLogger(Board.class);
 
     @Id
@@ -30,7 +31,6 @@ public class Board {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User username;
-
     @Transient
     private char[][] actualBoard;
     @Transient
@@ -64,6 +64,7 @@ public class Board {
         logger.info("Actual number of mines: {}", mineCounter);
 
     }
+
     /**
      * The createBoard method creates a 2D char array. Both the inner arrays and the outer
      * array will be "size" length. The method will place two kind of characters into the
@@ -95,6 +96,7 @@ public class Board {
 
         return board;
     }
+
     /**
      * The replacer method iterates through the 2D char array of our board and
      * will replace the fields next to a bomb or mine to the number of how many bombs
