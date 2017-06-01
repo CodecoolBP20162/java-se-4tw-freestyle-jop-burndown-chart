@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<div th:include="index::imports"></div>
+<body>
+<div style="text-align: center"><h3 id="choice-message">Minesweeper Pro Master World Championship Edition 3000</h3>
+</div>
+<form id="difficulty-form" action="/get_size" method="post">
+    <div><span class="difficulties">Easy</span>
+
+        <input type="radio" th:name="${'size'}" value="5" checked="checked"/>
+    </div>
+    <div><span class="difficulties">Normal</span>
+
+        <input type="radio" th:name="${'size'}" value="10"/>
+    </div>
+    <div><span class="difficulties">Hard</span>
+
+        <input type="radio" th:name="${'size'}" value="15"/>
+    </div>
+    <button type="submit" class="btn btn-primary active">Build it!</button>
+
+</form>
+<div id="motivation-message-conatiner">
+    <h3 id="motivation-message">You are great!</h3>
+    <input title="your new message" type="text" id="motivation-message-board" rows="1" cols="100" maxlength="80">
+    </input>
+    <div>
+        <button id="get-motivation" class="btn btn-primary">Get new motivational message</button>
+        <button id="set-motivation" class="btn btn-primary">Set motivational message</button>
+    </div>
+</div>
+</body>
+</html>
