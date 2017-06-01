@@ -1,8 +1,6 @@
 package com.codecool.jopburndown.controller;
 
 import com.codecool.jopburndown.database.DbHandler;
-import com.codecool.jopburndown.model.User;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
@@ -11,9 +9,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import org.hibernate.Session;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

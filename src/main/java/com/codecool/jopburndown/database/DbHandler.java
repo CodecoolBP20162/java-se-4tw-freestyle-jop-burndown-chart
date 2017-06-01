@@ -1,5 +1,5 @@
 package com.codecool.jopburndown.database;
-import com.codecool.jopburndown.model.Board;
+
 import com.codecool.jopburndown.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,8 +7,6 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Request;
-import spark.Response;
-
 import java.util.ArrayList;
 import java.util.List;
 
