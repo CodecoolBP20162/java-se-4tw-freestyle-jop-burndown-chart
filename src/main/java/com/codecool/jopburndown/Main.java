@@ -20,7 +20,7 @@ public class Main {
 
     static {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        System.setProperty("date",dateFormat.format(new Date()));
+        System.setProperty("date", dateFormat.format(new Date()));
     }
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -41,27 +41,34 @@ public class Main {
         get("/register", UserController::renderRegister, new ThymeleafTemplateEngine());
 
         get("/", (Request req, Response res) -> {
-            return new ThymeleafTemplateEngine().render(MainController.renderIndex(req, res, session));});
+            return new ThymeleafTemplateEngine().render(MainController.renderIndex(req, res, session));
+        });
 
         post("/get_size", BoardController::createNewBoard);
 
-        post("/winning_time", (Request req, Response res)->{
-            return MainController.getWinningTime(req,res,session);
+        post("/winning_time", (Request req, Response res) -> {
+            return MainController.getWinningTime(req, res, session);
         });
 
         get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 
         post("/retrieve_data", BoardController::infoAboutSquare);
 
-        post("/register", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitRegister(req, session));});
+        post("/register", (Request req, Response res) -> {
+            return new ThymeleafTemplateEngine().render(UserController.submitRegister(req, session));
+        });
 
-        post("/login", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitUser(req, session));});
+        post("/login", (Request req, Response res) -> {
+            return new ThymeleafTemplateEngine().render(UserController.submitUser(req, session));
+        });
 
         get("/logout", (Request req, Response res) -> {
-            return new ThymeleafTemplateEngine().render(UserController.logout(req));});
+            return new ThymeleafTemplateEngine().render(UserController.logout(req));
+        });
 
         get("/", (Request req, Response res) -> {
-            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(session));});
+            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(session));
+        });
 
         post("/get_size", BoardController::createNewBoard);
 

@@ -12,6 +12,10 @@ public class DbConnProps {
 
     private static final Logger logger = LoggerFactory.getLogger(DbConnProps.class);
 
+    /**
+     * It loads the data from properties.txt needed for the hibernate connection
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> connectProps() {
 
         Properties prop = new Properties();

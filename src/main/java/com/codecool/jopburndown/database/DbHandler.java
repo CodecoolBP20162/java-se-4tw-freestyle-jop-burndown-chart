@@ -24,16 +24,17 @@ public class DbHandler {
     /**
      * It calls the buildTablesWithUniqueConnection method
      */
-    private DbHandler(){
+    private DbHandler() {
         buildTablesWithUniqueConnection();
-    };
+    }
 
     /**
      * It creates DbHandler Singleton Class
+     *
      * @return DbHandler
      */
     public static DbHandler getDbHandlerInstance() {
-        if(DbHandlerInstance == null) {
+        if (DbHandlerInstance == null) {
             DbHandlerInstance = new DbHandler();
         }
         return DbHandlerInstance;
@@ -41,6 +42,7 @@ public class DbHandler {
 
     /**
      * It returns sessionFactory attribute
+     *
      * @return SessionFactory
      */
     public SessionFactory getSessionFactory() {
@@ -50,23 +52,24 @@ public class DbHandler {
     /**
      * It configures hibernate.cfg.xml with unique DB_user and DB_password and builds tables in DB
      */
-    public void buildTablesWithUniqueConnection(){
+    public void buildTablesWithUniqueConnection() {
         Configuration config = new Configuration();
         config.configure("hibernate.cfg.xml");
-        config.getProperties().setProperty("hibernate.connection.password",DB_PASSWORD);
-        config.getProperties().setProperty("hibernate.connection.username",DB_USER);
+        config.getProperties().setProperty("hibernate.connection.password", DB_PASSWORD);
+        config.getProperties().setProperty("hibernate.connection.username", DB_USER);
         sessionFactory = config.buildSessionFactory();
         logger.info("Test connection with the database created successfully.");
     }
 
     /**
      * It saves username and password to DB
+     *
      * @param req
      * @param session
      */
     public void saveUserToDB(Request req, Session session) {
         session.beginTransaction();
-        User user = new User(req.queryParams("username"), BCrypt.hashpw(req.queryParams("password"),BCrypt.gensalt(10)));
+        User user = new User(req.queryParams("username"), BCrypt.hashpw(req.queryParams("password"), BCrypt.gensalt(10)));
         session.save(user);
         session.getTransaction().commit();
         logger.info("Successfully saved the username and the password.");
@@ -74,6 +77,7 @@ public class DbHandler {
 
     /**
      * It gets username and password from DB
+     *
      * @param req
      * @param session
      */
@@ -83,7 +87,7 @@ public class DbHandler {
         String username = req.queryParams("username");
         String password = req.queryParams("password");
         for (User user : users) {
-            if (user.authenticate(password)){
+            if (user.authenticate(password)) {
                 req.session().attribute("user", user);
                 logger.info("Successful login");
             }
@@ -93,11 +97,12 @@ public class DbHandler {
 
     /**
      * Saves the score to the table upon successfully won game
-     * @param req Request
+     *
+     * @param req     Request
      * @param session Session
-     * @param score String
+     * @param score   String
      */
-    public void saveScoreToBoard(Request req, Session session, String score){
+    public void saveScoreToBoard(Request req, Session session, String score) {
         session.beginTransaction();
         Board board = new Board(req.session().attribute("size"), score, req.session().attribute("user"));
         session.save(board);

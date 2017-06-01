@@ -15,7 +15,7 @@ $(document).ready(function(){
         data:{"username":name,"password":psw},
         dataType:"html",
         success:function () {
-            location.href ="/";
+            location.href = "/";
         }
           });
     })

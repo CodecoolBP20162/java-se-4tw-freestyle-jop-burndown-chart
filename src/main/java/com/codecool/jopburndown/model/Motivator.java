@@ -9,7 +9,7 @@ public class Motivator {
 
     private Deque<String> motivationMessages = new LinkedList<>();
 
-    public Motivator(){
+    public Motivator() {
         motivationMessages.add("Az élettel az ember úgy van, sodródik, mint bacilus a h*gyban. - Blöró");
         motivationMessages.add("Ne legyél csirke, me' a csirkéket megeszik! - Ismeretlen, alkalmi ivócimbora");
         motivationMessages.add("Zöld sör után, a hó is zöld. - Ezt most találtam ki. ");
