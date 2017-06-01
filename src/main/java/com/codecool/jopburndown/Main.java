@@ -41,9 +41,10 @@ public class Main {
 
         get("/register", UserController::renderRegister, new ThymeleafTemplateEngine());
 
-        get("/", MainController::renderIndex, new ThymeleafTemplateEngine());
+        get("/", (Request req, Response res) -> {
+            return new ThymeleafTemplateEngine().render(MainController.renderIndex(req, res, session));});
 
-        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
+       // get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
         post("/get_size", BoardController::createNewBoard);
 
@@ -62,11 +63,12 @@ public class Main {
         get("/logout", (Request req, Response res) -> {
             return new ThymeleafTemplateEngine().render(UserController.logout(req));});
 
-        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
+        get("/", (Request req, Response res) -> {
+            return new ThymeleafTemplateEngine().render(MainController.renderDifficultyForm(req, res, session));});
 
         post("/get_size", BoardController::createNewBoard);
 
-        get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
+//        get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 
         post("/retrieve_data", BoardController::infoAboutSquare);
 

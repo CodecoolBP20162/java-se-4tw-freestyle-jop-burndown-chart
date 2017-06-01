@@ -102,7 +102,7 @@ public class DbHandler {
      */
     public void saveScoretoBoard(Request req, Session session , String score){
         session.beginTransaction();
-        Board board = new Board(score, req.session().attribute("user"));
+        Board board = new Board(req.session().attribute("size"),score, req.session().attribute("user"));
         session.save(board);
         session.getTransaction().commit();
         logger.info("Successfully saved the current score.");
