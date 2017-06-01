@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var span = document.getElementsByClassName("close")[0];
 
     $('#get-motivation').click(function () {
         $.ajax({
@@ -15,7 +16,7 @@ $(document).ready(function () {
     });
 
 
-    $('#logoutBut').click(function () {
+    $('#logout-button').click(function () {
         $.ajax({
                 url: "/logout",
                 type: "GET",
@@ -23,10 +24,9 @@ $(document).ready(function () {
                 success:function () {
                     location.href ="/";
                 }
-
         })
-
     });
+
 
     $('#set-motivation').click(function () {
         alert("setben vok");
@@ -107,7 +107,10 @@ $(document).ready(function () {
                         type: "POST",
                         async: true,
                         data: {"status":"ok"},
-                        success:function () {
+                        success:function (data) {
+                            var time = data["time"];
+                            console.log(time);
+                            $('#score').text(time);
                             
                         }
                     });
