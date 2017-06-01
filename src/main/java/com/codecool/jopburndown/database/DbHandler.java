@@ -21,10 +21,17 @@ public class DbHandler {
     private String DB_USER = dbProps.get(1);
     private String DB_PASSWORD = dbProps.get(2);
 
+    /**
+     * It calls the buildTablesWithUniqueConnection method
+     */
     private DbHandler(){
         buildTablesWithUniqueConnection();
     };
 
+    /**
+     * It creates DbHandler Singleton Class
+     * @return DbHandler
+     */
     public static DbHandler getDbHandlerInstance() {
         if(DbHandlerInstance == null) {
             DbHandlerInstance = new DbHandler();
@@ -32,10 +39,17 @@ public class DbHandler {
         return DbHandlerInstance;
     }
 
+    /**
+     * It returns sessionFactory attribute
+     * @return SessionFactory
+     */
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
+    /**
+     * It configures hibernate.cfg.xml with unique DB_user and DB_password and builds tables in DB
+     */
     public void buildTablesWithUniqueConnection(){
 
         Configuration config = new Configuration();
@@ -46,6 +60,11 @@ public class DbHandler {
         logger.info("Test connection with the database created successfully.");
     }
 
+    /**
+     * It saves username and password to DB
+     * @param req
+     * @param session
+     */
     public void saveUserToDB(Request req, Session session) {
 
         session.beginTransaction();
@@ -55,6 +74,11 @@ public class DbHandler {
         logger.info("Successfully saved the username and the password.");
     }
 
+    /**
+     * It gets username and password from DB
+     * @param req
+     * @param session
+     */
     public void getUserFromDB(Request req, Session session) {
 
         session.beginTransaction();
