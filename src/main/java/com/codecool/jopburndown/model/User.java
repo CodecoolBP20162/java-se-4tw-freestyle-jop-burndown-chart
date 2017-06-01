@@ -1,7 +1,6 @@
 package com.codecool.jopburndown.model;
 
 import javax.persistence.*;
-
 import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
@@ -37,14 +36,5 @@ public class User {
      */
     public String getUsername() {
         return username;
-    }
-
-    /**
-     * Returns the password of the user
-     *
-     * @return String
-     */
-    public String getPassword() {
-        return password;
     }
 }

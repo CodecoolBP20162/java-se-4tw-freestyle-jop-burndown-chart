@@ -1,10 +1,8 @@
 package com.codecool.jopburndown.controller;
 
 import com.codecool.jopburndown.database.DbHandler;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

@@ -3,12 +3,10 @@ package com.codecool.jopburndown.controller;
 import com.codecool.jopburndown.database.DbHandler;
 import com.codecool.jopburndown.model.Board;
 import org.json.simple.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

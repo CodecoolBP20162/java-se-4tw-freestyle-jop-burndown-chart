@@ -4,10 +4,8 @@ import com.codecool.jopburndown.model.Board;
 import com.codecool.jopburndown.model.User;
 import spark.Request;
 import org.mindrot.jbcrypt.BCrypt;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.hibernate.Session;
@@ -29,8 +27,6 @@ public class DbHandler {
     private DbHandler() {
         buildTablesWithUniqueConnection();
     }
-
-    ;
 
     /**
      * It creates DbHandler Singleton Class

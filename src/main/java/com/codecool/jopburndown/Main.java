@@ -5,12 +5,9 @@ import com.codecool.jopburndown.controller.UserController;
 import com.codecool.jopburndown.controller.BoardController;
 import com.codecool.jopburndown.controller.MotivatorController;
 import com.codecool.jopburndown.database.DbHandler;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import static spark.Spark.*;
-
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import spark.Request;
 import spark.Response;

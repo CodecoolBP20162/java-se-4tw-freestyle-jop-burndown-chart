@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.hibernate.Session;
@@ -94,7 +93,6 @@ public class Board {
         }
         logger.info("New board created. - actual size: {}", size);
         logger.debug("Actual size: {}", size);
-
         return board;
     }
 
