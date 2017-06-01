@@ -62,7 +62,6 @@ public class Board {
         logger.info("Actual number of mines: {}", mineCounter);
 
     }
-
     /**
      * The createBoard method creates a 2D char array. Both the inner arrays and the outer
      * array will be "size" length. The method will place two kind of characters into the
@@ -73,7 +72,7 @@ public class Board {
      * @param size This parameter will be used to create the size of the arrays.
      * @return 2D char array, which represents the board with all the bombs and safe areas.
      */
-    private char[][] createBoard(int size) {
+    char[][] createBoard(int size) {
         char[][] board = new char[size][size];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -94,13 +93,12 @@ public class Board {
 
         return board;
     }
-
     /**
      * The replacer method iterates through the 2D char array of our board and
      * will replace the fields next to a bomb or mine to the number of how many bombs
      * are next to this certain field.
      */
-    private void replacer() {
+    void replacer() {
         for (int i = 0; i < this.actualBoard.length; i++) {
             for (int j = 0; j < this.actualBoard[i].length; j++) {
                 if (this.actualBoard[i][j] == '9') {
@@ -138,6 +136,22 @@ public class Board {
      */
     public char[][] getActualBoard() {
         return actualBoard;
+    }
+
+    public void setActualBoard(char[][] actualBoard) {
+        this.actualBoard = actualBoard;
+    }
+
+    public void setCopyBoard(char[][] copyBoard) {
+        this.copyBoard = copyBoard;
+    }
+
+    /**
+     * Getter for the copyBoard
+     * @return the copyBoard
+     */
+    char[][] getCopyBoard() {
+        return copyBoard;
     }
 
     /**
