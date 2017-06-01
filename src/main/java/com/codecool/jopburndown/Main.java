@@ -1,8 +1,8 @@
 package com.codecool.jopburndown;
 
-import com.codecool.jopburndown.controller.FieldController;
 import com.codecool.jopburndown.controller.MainController;
 import com.codecool.jopburndown.controller.UserController;
+import com.codecool.jopburndown.controller.BoardController;
 import com.codecool.jopburndown.database.DbHandler;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,20 +12,8 @@ import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import static spark.Spark.*;
 import spark.Request;
 import spark.Response;
-import com.codecool.jopburndown.controller.BoardController;
-import com.codecool.jopburndown.controller.MainController;
-import com.codecool.jopburndown.model.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import spark.template.thymeleaf.ThymeleafTemplateEngine;
-import static spark.Spark.*;
-import com.codecool.jopburndown.controller.BoardController;
-import com.codecool.jopburndown.controller.MainController;
-import com.codecool.jopburndown.model.Board;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import spark.template.thymeleaf.ThymeleafTemplateEngine;
-import static spark.Spark.*;
 
 public class Main {
 

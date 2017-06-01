@@ -3,11 +3,6 @@ package com.codecool.jopburndown.model;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Random;
-import com.codecool.jopburndown.controller.BoardController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.util.*;
-import com.codecool.jopburndown.controller.BoardController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.*;
@@ -34,9 +29,9 @@ public class Board {
     @JoinColumn(name = "user_id")
     private User username;
 
+    @Transient
     private char[][] actualBoard;
     private char[][] copyBoard;
-    @Transient
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
     public int mineCounter = 0;
 

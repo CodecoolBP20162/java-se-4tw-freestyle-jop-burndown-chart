@@ -1,6 +1,5 @@
 package com.codecool.jopburndown.controller;
 
-import com.codecool.jopburndown.model.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
@@ -16,11 +15,14 @@ import java.util.HashMap;
  */
 public class MainController {
 
+    private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+
     public static ModelAndView renderIndex(Request req, Response res) {
         if (!req.session().attributes().contains("user")) {
             return UserController.renderLogin(req, res);
         }
         HashMap<String, String> map = new HashMap<>();
+        logger.info("Index page access");
         return new ModelAndView(map,"form");
     }
 
