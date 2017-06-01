@@ -57,8 +57,8 @@ public class UserController {
     /**
      * Redirects to the login page
      *
-     * @param req
-     * @param session
+     * @param req Request
+     * @param session Session
      * @return ModelAndView
      */
     public static ModelAndView submitRegister(Request req, Session session) {
@@ -71,8 +71,8 @@ public class UserController {
     /**
      * Redirects to the board page
      *
-     * @param req
-     * @param session
+     * @param req Request
+     * @param session Session
      * @return ModelAndView
      */
     public static ModelAndView submitUser(Request req, Session session) {

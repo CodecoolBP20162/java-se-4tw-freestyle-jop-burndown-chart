@@ -15,7 +15,7 @@ public class DbConnProps {
 
     /**
      * It loads the data from properties.txt needed for the hibernate connection
-     * @return ArrayList<String>
+     * @return ArrayList of String
      */
     public static ArrayList<String> connectProps() {
 

@@ -44,7 +44,7 @@ public class MainController {
     /**
      * This method renders the main page. It will return a Spark ModelAndView object.
      *
-     * @param session
+     * @param session Session
      * @return ModelAndView
      */
     public static ModelAndView renderDifficultyForm(Session session) {

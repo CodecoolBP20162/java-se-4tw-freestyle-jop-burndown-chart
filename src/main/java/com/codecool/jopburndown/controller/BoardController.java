@@ -41,8 +41,8 @@ public class BoardController {
      * This method is responsible for rendering the board page with the actual content
      * of the instantiated board.
      *
-     * @param req
-     * @param res
+     * @param req Request
+     * @param res Response
      * @return ModelAndView
      */
     public static ModelAndView showBoard(Request req, Response res) {
@@ -59,8 +59,8 @@ public class BoardController {
      * responsible for returning every coordinate and the values on that coordinate which
      * should be revealed to the user.
      *
-     * @param req
-     * @param res
+     * @param req Request
+     * @param res Response
      * @return JSONObject
      */
     public static JSONObject infoAboutSquare(Request req, Response res) {
@@ -90,8 +90,8 @@ public class BoardController {
      * This method will return a jsonObj containing the number of all mines present in the
      * board.
      *
-     * @param req
-     * @param res
+     * @param req Request
+     * @param res Response
      * @return JSONObject
      */
     public static JSONObject countMines(Request req, Response res) {

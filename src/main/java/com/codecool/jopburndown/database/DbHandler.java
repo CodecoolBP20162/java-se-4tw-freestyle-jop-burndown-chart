@@ -42,7 +42,6 @@ public class DbHandler {
 
     /**
      * It returns sessionFactory attribute
-     *
      * @return SessionFactory
      */
     public SessionFactory getSessionFactory() {
@@ -64,8 +63,8 @@ public class DbHandler {
     /**
      * It saves username and password to DB
      *
-     * @param req
-     * @param session
+     * @param req Request
+     * @param session Session
      */
     public void saveUserToDB(Request req, Session session) {
         session.beginTransaction();
@@ -78,8 +77,8 @@ public class DbHandler {
     /**
      * It gets username and password from DB
      *
-     * @param req
-     * @param session
+     * @param req Request
+     * @param session Session
      */
     public void getUserFromDB(Request req, Session session) {
         session.beginTransaction();

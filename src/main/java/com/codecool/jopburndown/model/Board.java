@@ -50,13 +50,12 @@ public class Board {
 
     /**
      * The constructor creates an actual board. This is done by the createBoard method.
-     *
-     * @param size
-     * @see Board#createBoard(int)
+     * @param size size for new board
+     * @see Board createBoard(int)
      * Then it calls the replacer method. To see how this works
-     * @see Board#replacer()
+     * @see Board replacer()
      * It also creates a copy of that field, which will be used in the search engine.
-     * @see Board#searchEngine(int, int)
+     * @see Board searchEngine(int, int)
      */
     public Board(int size) {
         actualBoard = createBoard(size);
@@ -73,7 +72,6 @@ public class Board {
      * board - zeros and nines. Nine will represent a bomb or mine, and zero represents
      * a safe field. After the board is filled with numbers, the method will give bach
      * the 2D array.
-     *
      * @param size This parameter will be used to create the size of the arrays.
      * @return 2D char array, which represents the board with all the bombs and safe areas.
      */
@@ -123,7 +121,6 @@ public class Board {
 
     /**
      * This method is a self-made deepcopy method which will copy the actualBoard 2D array.
-     *
      * @return the new 2D array, which is an exact copy of the original actualBoard.
      */
     private char[][] deepCopyBoard() {
@@ -136,7 +133,6 @@ public class Board {
 
     /**
      * Getter for the actualBoard
-     *
      * @return the actualBoard
      */
     public char[][] getActualBoard() {
@@ -149,7 +145,6 @@ public class Board {
 
     /**
      * Getter for the copyBoard
-     *
      * @return the copyBoard
      */
     char[][] getCopyBoard() {
@@ -162,7 +157,6 @@ public class Board {
 
     /**
      * Returns a given fields content by its coordinates.
-     *
      * @param x the x coordinate of the field
      * @param y the y coordinate of the field
      * @return the value of the given field
@@ -174,7 +168,6 @@ public class Board {
     /**
      * This is the function which will be called from outside the Board class in order
      * to return all coordinates where there is a zero or a field next to a zero.
-     *
      * @param x the x coordinate of the center of the examination
      * @param y the y coordinate of the center of the examination
      * @return all the coordinates where there is a zero or a number next to a zero.
@@ -220,7 +213,6 @@ public class Board {
     /**
      * This method will get ceratin coordinates, it checks what numbers are present at these locations
      * and will return a list of these elements.
-     *
      * @param coords A list of coordinates
      * @return A list of characters, which are present at the given coordinates.
      */
@@ -235,7 +227,6 @@ public class Board {
     /**
      * The overriden toString method will print out the currentBoard of the instance in a human
      * readable nice form.
-     *
      * @return returns the string to be printed.
      */
     @Override
@@ -260,9 +251,8 @@ public class Board {
 
     /**
      * Gets all Board object from the table
-     *
      * @param session Session
-     * @return List<Board>
+     * @return List of Board objects
      */
     public static List<Board> getAllScore(Session session) {
         List<Board> boards = session.createQuery("FROM Board").list();
