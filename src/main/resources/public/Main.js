@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
 
 
-    $('#logoutBut').click(function () {
+    $('#logout-button').click(function () {
         $.ajax({
                 url: "/logout",
                 type: "GET",

@@ -10,12 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by petya on 2017.06.01..
+ * This class handles the Motivator objects.
  */
 public class MotivatorController {
 
-    private static Motivator motivator = new Motivator();
+    private static Motivator motivator = Motivator.getInstance();
 
+    /**
+     * This method put a string from the motivator's deque into a JSONObject then give it back.
+     * @param req for Spark
+     * @param res for Spark
+     * @return JSONObject for ajax request
+     */
     public static JSONObject getMotivationalMessage(Request req, Response res){
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("message", motivator.getMotivationMessage());
@@ -23,6 +29,13 @@ public class MotivatorController {
         return jsonObj;
     }
 
+    /**
+     *This method add a new motivational string to the motivator's limited deque,
+     *  then remove its last element.
+     * @param req for Spark
+     * @param res for Spark
+     * @return Response object for Spark
+     */
     public static Response setNewMotivationalMessage(Request req, Response res){
         String message = req.queryParams("message");
         motivator.setMotivationMessages(message);

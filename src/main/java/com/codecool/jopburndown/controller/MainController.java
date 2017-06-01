@@ -31,9 +31,9 @@ public class MainController {
 
     /**
      * This method renders the main page. It will return a Spark ModelAndView object.
-     * @param req
-     * @param res
-     * @return
+     * @param req for Spark
+     * @param res for Spark
+     * @return ModelAndView
      */
     public static ModelAndView renderDifficultyForm(Request req, Response res) {
         HashMap<String, String> map = new HashMap<>();
