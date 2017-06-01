@@ -19,6 +19,11 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * Authenticates the user password with the given input
+     * @param password String
+     * @return boolean
+     */
     public boolean authenticate(String password) {
         return BCrypt.checkpw(password, this.password);
     }

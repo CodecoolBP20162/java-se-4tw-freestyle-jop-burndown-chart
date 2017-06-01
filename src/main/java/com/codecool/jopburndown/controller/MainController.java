@@ -47,6 +47,15 @@ public class MainController {
         return new ModelAndView(map, "index");
     }
 
+    /**
+     * Upon a won game, saves the completed time
+     * with a min-sec-ms format and starts the
+     * process to save it to the database.
+     * @param req  Request
+     * @param response Response
+     * @param session Session
+     * @return Response
+     */
     public static Response getWinningTime( Request req ,Response response, Session session){
         if(req.session().attributes().contains("time")){
             Date oldTime = req.session().attribute("time");

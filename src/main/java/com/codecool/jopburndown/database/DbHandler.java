@@ -94,6 +94,12 @@ public class DbHandler {
         session.getTransaction().commit();
     }
 
+    /**
+     * Saves the score to the table upon successfully won game
+     * @param req Request
+     * @param session Session
+     * @param score String
+     */
     public void saveScoretoBoard(Request req, Session session , String score){
         session.beginTransaction();
         Board board = new Board(5,score, req.session().attribute("user"));
