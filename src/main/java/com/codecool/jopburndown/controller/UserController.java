@@ -1,6 +1,5 @@
 package com.codecool.jopburndown.controller;
 
-
 import com.codecool.jopburndown.database.DbHandler;
 import com.codecool.jopburndown.model.User;
 import org.hibernate.SessionFactory;
@@ -47,12 +46,31 @@ public class UserController {
         return new ModelAndView(map,"register");
     }
 
-    public static ModelAndView submitRegister(Request req, Response res){
+    /**
+     * Redirects to the login page
+     * @param req
+     * @param session
+     * @return
+     */
+    public static ModelAndView submitRegister(Request req, Session session){
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
-        SessionFactory sessionFactory = dbHandler.getSessionFactory();
-        Session session = sessionFactory.openSession();
         dbHandler.saveUserToDB(req, session);
         logger.info("Successfully submitted");
-        return new ModelAndView(map, "index");
+        return new ModelAndView(map, "login");
+    }
+
+    /**
+     * Redirects to the board page
+     * @param req
+     * @param session
+     * @return
+     */
+    public static ModelAndView submitUser(Request req, Session session){
+        DbHandler dbHandler = DbHandler.getDbHandlerInstance();
+        dbHandler.getUserFromDB(req, session);
+        logger.info("Successful login");
+        return new ModelAndView(map, "board");
     }
 }
+
+
