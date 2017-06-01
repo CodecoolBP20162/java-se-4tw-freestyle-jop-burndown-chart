@@ -2,6 +2,8 @@ package com.codecool.jopburndown.controller;
 
 import com.codecool.jopburndown.model.Board;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -12,13 +14,15 @@ import java.util.Map;
 import java.util.*;
 
 public class BoardController {
-
+    private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
     private static Board board;
 
     public static Response createNewBoard(Request req, Response res){
         int size = Integer.parseInt(req.queryParams("size"));
         board = new Board(size);
         res.redirect("/board");
+        logger.info("Table creation executed.\nactual board:\n{}", board);
+
         return res;
     }
 

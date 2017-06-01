@@ -2,6 +2,8 @@ package com.codecool.jopburndown.controller;
 
 
 import com.codecool.jopburndown.model.Board;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

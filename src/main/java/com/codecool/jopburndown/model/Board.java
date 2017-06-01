@@ -1,11 +1,15 @@
 package com.codecool.jopburndown.model;
 
 
+import com.codecool.jopburndown.controller.BoardController;
 import com.sun.org.apache.xpath.internal.SourceTree;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 public class Board {
+    private static final Logger logger = LoggerFactory.getLogger(Board.class);
 
     private char[][] actualBoard;
     private char[][] copyBoard;
@@ -13,9 +17,12 @@ public class Board {
     public int mineCounter = 0;
 
     public Board(int size) {
-        this.actualBoard = createBoard(size);
+        actualBoard = createBoard(size);
         replacer();
-        this.copyBoard = deepCopyBoard();
+        copyBoard = deepCopyBoard();
+        logger.debug("Board deep copied! actual board: {} copied board: {}", actualBoard.hashCode(), copyBoard.hashCode());
+        logger.info("Actual number of mines: {}", mineCounter);
+
     }
 
     private char[][] createBoard(int size) {
@@ -34,6 +41,9 @@ public class Board {
                 }
             }
         }
+        logger.info("New board created. - actual size: {}", size);
+        logger.debug("Actual size: {}", size);
+
         return board;
     }
 
