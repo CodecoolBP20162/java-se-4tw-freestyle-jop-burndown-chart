@@ -69,7 +69,7 @@ public class UserController {
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
         dbHandler.getUserFromDB(req, session);
         logger.info("Successful login");
-        return new ModelAndView(map, "board");
+        return new ModelAndView(map, "form");
     }
 }
 
