@@ -1,6 +1,7 @@
 package com.codecool.jopburndown;
 
 import com.codecool.jopburndown.controller.FieldController;
+import com.codecool.jopburndown.controller.BoardController;
 import com.codecool.jopburndown.controller.MainController;
 import com.codecool.jopburndown.controller.UserController;
 import com.codecool.jopburndown.database.DbHandler;
@@ -34,14 +35,20 @@ public class Main {
 
         get("/register", UserController::renderRegister, new ThymeleafTemplateEngine());
 
-        get("/", MainController::renderIndex, new ThymeleafTemplateEngine());
+        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
-        post("/get_size", FieldController::createNewBoard);
+        get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
-        get("/board", FieldController::showBoard, new ThymeleafTemplateEngine());
+        post("/get_size", BoardController::createNewBoard);
+
+        get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 
         post("/register", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitRegister(req, session));});
 
         post("/login", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitUser(req, session));});
+
+        post("/retrieve_data", BoardController::infoAboutSquare);
+
+        get("/evaluate", BoardController::countMines);
     }
 }
