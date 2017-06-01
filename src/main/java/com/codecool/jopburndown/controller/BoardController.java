@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,13 +26,14 @@ public class BoardController {
      * This method generates a new board with the information it gets from the client (i.e.
      * how many fields and rows the user wants to be generated). It then redirects to the route
      * "/board", where the instantiated board will be displayed.
+     *
      * @param req the Request object
      * @param res the Response object
      * @return a return needed by Spark.
      */
-    public static Response createNewBoard(Request req, Response res){
+    public static Response createNewBoard(Request req, Response res) {
         int size = Integer.parseInt(req.queryParams("size"));
-        req.session().attribute("size",size);
+        req.session().attribute("size", size);
         board = new Board(size);
         res.redirect("/board");
         logger.info("Table creation executed.\nactual board:\n{}", board);
@@ -41,15 +43,16 @@ public class BoardController {
     /**
      * This method is responsible for rendering the board page with the actual content
      * of the instantiated board.
+     *
      * @param req
      * @param res
      * @return ModelAndView
      */
-    public static ModelAndView showBoard(Request req, Response res){
+    public static ModelAndView showBoard(Request req, Response res) {
         char[][] actualBoard = board.getActualBoard();
         Map<String, Object> params = new HashMap<>();
         params.put("board", actualBoard);
-        req.session().attribute("time",new Date());
+        req.session().attribute("time", new Date());
         return new ModelAndView(params, "board");
     }
 
@@ -58,11 +61,12 @@ public class BoardController {
      * contains the x, y coordinates of the field, which the user has clicked. This method is
      * responsible for returning every coordinate and the values on that coordinate which
      * should be revealed to the user.
+     *
      * @param req
      * @param res
      * @return JSONObject
      */
-    public static JSONObject infoAboutSquare(Request req, Response res){
+    public static JSONObject infoAboutSquare(Request req, Response res) {
         JSONObject jsonObj = new JSONObject();
         List<Character> currentChars = new ArrayList<>();
         List<List<Integer>> coordsOfCharsToDisplay;
@@ -71,7 +75,7 @@ public class BoardController {
         int y = Integer.parseInt(req.queryParams("y"));
         char actualChar = board.getActualElement(x, y);
 
-        if (actualChar == '0'){
+        if (actualChar == '0') {
             coordsOfCharsToDisplay = board.getListToReveal(x, y);
             currentChars = board.getAllCharsToDisplay(coordsOfCharsToDisplay);
         } else {
@@ -88,6 +92,7 @@ public class BoardController {
     /**
      * This method will return a jsonObj containing the number of all mines present in the
      * board.
+     *
      * @param req
      * @param res
      * @return JSONObject

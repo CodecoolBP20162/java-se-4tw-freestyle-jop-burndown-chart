@@ -1,6 +1,7 @@
 package com.codecool.jopburndown.model;
 
 import javax.persistence.*;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
@@ -21,6 +22,7 @@ public class User {
 
     /**
      * Authenticates the user password with the given input
+     *
      * @param password String
      * @return boolean
      */
@@ -28,10 +30,20 @@ public class User {
         return BCrypt.checkpw(password, this.password);
     }
 
+    /**
+     * Returns the current user's name
+     *
+     * @return String
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Returns the password of the user
+     *
+     * @return String
+     */
     public String getPassword() {
         return password;
     }

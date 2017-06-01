@@ -1,8 +1,10 @@
 package com.codecool.jopburndown.controller;
 
 import com.codecool.jopburndown.database.DbHandler;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -20,38 +22,47 @@ public class UserController {
 
     /**
      * Renders the login page
+     *
      * @param req Request
      * @param res Response
      * @return ModelAndView
      */
-    public static ModelAndView renderLogin(Request req, Response res){
+    public static ModelAndView renderLogin(Request req, Response res) {
         logger.info("Login page accessed from ip: " + req.ip());
-        return new ModelAndView(map,"login");
+        return new ModelAndView(map, "login");
     }
 
-    public static ModelAndView logout(Request req){
+    /**
+     * Logouts the user, removes user from current session
+     *
+     * @param req Request
+     * @return ModelAndView
+     */
+    public static ModelAndView logout(Request req) {
         req.session().removeAttribute("user");
-        return new ModelAndView(map,"login");
+        return new ModelAndView(map, "login");
     }
 
     /**
      * Renders the register page
+     *
      * @param req Request
      * @param res Response
      * @return ModelAndView
      */
-    public static ModelAndView renderRegister(Request req, Response res){
+    public static ModelAndView renderRegister(Request req, Response res) {
         logger.info("Register page accessed from ip: " + req.ip());
-        return new ModelAndView(map,"register");
+        return new ModelAndView(map, "register");
     }
 
     /**
      * Redirects to the login page
+     *
      * @param req
      * @param session
      * @return ModelAndView
      */
-    public static ModelAndView submitRegister(Request req, Session session){
+    public static ModelAndView submitRegister(Request req, Session session) {
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
         dbHandler.saveUserToDB(req, session);
         logger.info("Successfully submitted");
@@ -60,11 +71,12 @@ public class UserController {
 
     /**
      * Redirects to the board page
+     *
      * @param req
      * @param session
      * @return ModelAndView
      */
-    public static ModelAndView submitUser(Request req, Session session){
+    public static ModelAndView submitUser(Request req, Session session) {
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
         dbHandler.getUserFromDB(req, session);
         logger.info("Successful login");
