@@ -29,9 +29,7 @@ $(document).ready(function () {
 
 
     $('#set-motivation').click(function () {
-        alert("setben vok");
         var newMessage = $('#motivation-message-board').val();
-        alert(newMessage);
         $.ajax({
             url: "/set_motivation",
             type: "POST",
