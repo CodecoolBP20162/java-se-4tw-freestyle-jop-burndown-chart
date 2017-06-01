@@ -32,7 +32,7 @@ public class UserController {
      * @return ModelAndView
      */
     public static ModelAndView renderLogin(Request req, Response res){
-        logger.info("Login page accessed");
+        logger.info("Login page accessed from ip: " + req.ip());
         return new ModelAndView(map,"login");
     }
 
@@ -43,7 +43,7 @@ public class UserController {
      * @return ModelAndView
      */
     public static ModelAndView renderRegister(Request req, Response res){
-        logger.info("Register page accessed");
+        logger.info("Register page accessed from ip: " + req.ip());
         return new ModelAndView(map,"register");
     }
 

@@ -37,7 +37,7 @@ public class Main {
         get("/login", UserController::renderLogin, new ThymeleafTemplateEngine());
 
         get("/register", UserController::renderRegister, new ThymeleafTemplateEngine());
-        
+
         get("/", MainController::renderIndex, new ThymeleafTemplateEngine());
 
         post("/get_size", FieldController::createNewBoard);
