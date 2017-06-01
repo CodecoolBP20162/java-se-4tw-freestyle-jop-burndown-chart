@@ -1,5 +1,6 @@
 package com.codecool.jopburndown.database;
 
+import com.codecool.jopburndown.model.Board;
 import com.codecool.jopburndown.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -89,5 +90,14 @@ public class DbHandler {
                 logger.info("Successful login");
             }
         }
+        session.getTransaction().commit();
+    }
+
+    public void saveScoretoBoard(Request req, Session session , String score){
+        session.beginTransaction();
+        Board board = new Board(5,score, req.session().attribute("user"));
+        session.save(board);
+        session.getTransaction().commit();
+        logger.info("Successfully saved the current score.");
     }
 }

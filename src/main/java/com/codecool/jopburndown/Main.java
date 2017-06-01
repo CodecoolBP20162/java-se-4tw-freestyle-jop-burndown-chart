@@ -46,7 +46,9 @@ public class Main {
 
         post("/get_size", BoardController::createNewBoard);
 
-        post("/winning_time", MainController::getWinningTime);
+        post("/winning_time", (Request req, Response res)->{
+            return MainController.getWinningTime(req,res,session);
+        });
 
         get("/board", BoardController::showBoard, new ThymeleafTemplateEngine());
 

@@ -1,5 +1,7 @@
 package com.codecool.jopburndown.controller;
 
+import com.codecool.jopburndown.database.DbHandler;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.ModelAndView;
@@ -45,7 +47,7 @@ public class MainController {
         return new ModelAndView(map, "index");
     }
 
-    public static Response getWinningTime( Request req ,Response response){
+    public static Response getWinningTime( Request req ,Response response, Session session){
         if(req.session().attributes().contains("time")){
             Date oldTime = req.session().attribute("time");
             long milSec = new Date().getTime() - oldTime.getTime();
@@ -53,6 +55,8 @@ public class MainController {
             SimpleDateFormat dateFormat = new SimpleDateFormat("mm-ss-SS");
             String format =  dateFormat.format(date);
             req.session().removeAttribute("time");
+            DbHandler dbHandler =   DbHandler.getDbHandlerInstance();
+            dbHandler.saveScoretoBoard(req,session,format);
         }
         return response;
     }
