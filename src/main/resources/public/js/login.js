@@ -10,7 +10,7 @@ $(document).ready(function(){
 
       $.ajax({
 
-        url:"/register_user",
+        url:"/register",
         type:"POST",
         data:{"username":name,"password":psw},
         dataType:"html",
@@ -26,7 +26,7 @@ $(document).ready(function(){
         var psw=document.getElementById("login_psw").value;
         $.ajax({
 
-            url:"/login_user",
+            url:"/login",
             type:"POST",
             data:{"username":name,"password":psw},
             dataType:"html",
