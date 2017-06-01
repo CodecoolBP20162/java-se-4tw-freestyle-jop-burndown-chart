@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import spark.Request;
+import spark.Response;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,8 @@ public class DbHandler {
         return sessionFactory;
     }
 
+
+
     public void buildTablesWithUniqueConnection(){
 
         Configuration config = new Configuration();
@@ -44,11 +47,10 @@ public class DbHandler {
         logger.info("Test connection with the database created successfully.");
     }
 
-    public void saveUserToDB(Session session) {
+    public void saveUserToDB(Request req, Session session) {
 
         session.beginTransaction();
-        User user = new User("xy", "yx");
-        //User user = new User(req.queryParams("username"), req.queryParams("password"));
+        User user = new User(req.queryParams("username"), req.queryParams("password"));
         session.save(user);
         session.getTransaction().commit();
         logger.info("Successfully saved the username and the password.");
