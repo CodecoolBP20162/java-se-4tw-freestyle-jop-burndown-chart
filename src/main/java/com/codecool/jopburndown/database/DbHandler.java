@@ -10,6 +10,7 @@ import spark.Request;
 import spark.Response;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DbHandler {
 
@@ -35,8 +36,6 @@ public class DbHandler {
         return sessionFactory;
     }
 
-
-
     public void buildTablesWithUniqueConnection(){
 
         Configuration config = new Configuration();
@@ -56,4 +55,17 @@ public class DbHandler {
         logger.info("Successfully saved the username and the password.");
     }
 
+    public void getUserFromDB(Request req, Session session) {
+
+        session.beginTransaction();
+        List<User> users = session.createQuery("FROM User").list();
+        String username = req.queryParams("username");
+        String password = req.queryParams("password");
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)){
+                req.session().attribute("user", user);
+                logger.info("Successful login");
+            }
+        }
+    }
 }
