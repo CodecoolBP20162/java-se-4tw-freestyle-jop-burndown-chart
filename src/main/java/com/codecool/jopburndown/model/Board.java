@@ -31,9 +31,11 @@ public class Board {
 
     @Transient
     private char[][] actualBoard;
+    @Transient
     private char[][] copyBoard;
     @Transient
     private List<List<Integer>> coords = new ArrayList<List<Integer>>();
+    @Transient
     public int mineCounter = 0;
 
     public Board(int boardSize, int score, User username) {
