@@ -8,12 +8,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.codecool.jopburndown.controller.MotivatorController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import static spark.Spark.*;
 import spark.Request;
 import spark.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class Main {
 
@@ -25,8 +28,6 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-
-
         DbHandler dbHandler = DbHandler.getDbHandlerInstance();
         SessionFactory sessionFactory = dbHandler.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -58,6 +59,9 @@ public class Main {
 
         post("/login", (Request req, Response res) -> {return new ThymeleafTemplateEngine().render(UserController.submitUser(req, session));});
 
+        get("/logout", (Request req, Response res) -> {
+            return new ThymeleafTemplateEngine().render(UserController.logout(req));});
+
         get("/", MainController::renderDifficultyForm, new ThymeleafTemplateEngine());
 
         post("/get_size", BoardController::createNewBoard);
@@ -67,5 +71,9 @@ public class Main {
         post("/retrieve_data", BoardController::infoAboutSquare);
 
         get("/evaluate", BoardController::countMines);
+
+        get("/motivation", MotivatorController::getMotivationalMessage);
+
+        post("/set_motivation", MotivatorController::setNewMotivationalMessage);
     }
 }

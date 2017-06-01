@@ -38,8 +38,8 @@ public class Board {
     @Transient
     public int mineCounter = 0;
 
-    public Board(int boardSize, String score, User username) {
-        this.boardSize = boardSize;
+    public Board(String score, User username) {
+        this.boardSize = getActualBoard().length;
         this.score = score;
         this.username = username;
     }

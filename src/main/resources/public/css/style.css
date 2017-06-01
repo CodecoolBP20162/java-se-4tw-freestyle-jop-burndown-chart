@@ -135,3 +135,13 @@ table {
 #choice-message{
     font-weight: bold;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#logout-button{
+    float: right;
+}
