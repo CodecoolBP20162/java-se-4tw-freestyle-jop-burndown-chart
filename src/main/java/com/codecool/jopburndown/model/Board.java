@@ -83,7 +83,7 @@ public class Board {
                 Random randomNum = new Random();
                 int actualRandomNum = randomNum.nextInt(10);
 
-                if (actualRandomNum > 8) {
+                if (actualRandomNum > 9) {
                     board[i][j] = '9';
                     mineCounter++;
                 } else {

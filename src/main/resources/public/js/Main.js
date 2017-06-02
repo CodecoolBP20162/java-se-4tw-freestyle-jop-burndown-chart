@@ -107,8 +107,7 @@ $(document).ready(function () {
                         data: {"status": "ok"},
                         success: function (data) {
                             var time = data["time"];
-                            console.log(time);
-                            $('#score').text(time);
+                            $('.score').text(time);
                         }
                     });
                 }
